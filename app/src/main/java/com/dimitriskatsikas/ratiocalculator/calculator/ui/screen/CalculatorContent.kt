@@ -143,11 +143,9 @@ fun MainContent(
             .padding(horizontal = 16.dp)
     ) {
         Spacer(Modifier.height(24.dp))
-        StartPointSection(state, onAction)
+        SourceSection(state, onAction)
         Spacer(Modifier.height(24.dp))
-        EndPointSection(state, onAction)
-        Spacer(Modifier.height(24.dp))
-        TargetValueSection(state, onAction)
+        TargetSection(state, onAction)
         Spacer(Modifier.height(24.dp))
         if (state.result.isNotEmpty()) {
             ResultCard(result = state.result)
@@ -164,132 +162,71 @@ fun MainContent(
 }
 
 @Composable
-private fun StartPointSection(
+private fun SourceSection(
     state: CalculatorView.State,
     onAction: (UiAction) -> Unit
 ) {
-    SectionHeader(text = "stringResource(R.string.start_point_header)")
+    SectionHeader(text = stringResource(R.string.calculator_section_a_header))
     Row(
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
-        DecimalInputField(
-            value = state.inputX1,
+        SourceInputField(
+            value = state.sourceWidth,
             onValueChange = { newText ->
-                onAction(
-                    UiAction.InputChange(
-                        inputX1 = newText,
-                        inputY1 = state.inputY1,
-                        inputX2 = state.inputX2,
-                        inputY2 = state.inputY2,
-                        inputX3 = state.inputX3
-                    )
-                )
+                onAction(UiAction.SourceWidthChange(newText))
             },
-            label = "stringResource(R.string.input_label_x1)",
+            label = stringResource(R.string.calculator_input_label_w1),
             modifier = Modifier.weight(1f)
         )
-        DecimalInputField(
-            value = state.inputY1,
+        SourceInputField(
+            value = state.sourceHeight,
             onValueChange = { newText ->
-                onAction(
-                    UiAction.InputChange(
-                        inputX1 = state.inputX1,
-                        inputY1 = newText,
-                        inputX2 = state.inputX2,
-                        inputY2 = state.inputY2,
-                        inputX3 = state.inputX3
-                    )
-                )
+                onAction(UiAction.SourceHeightChange(newText))
             },
-            label = "stringResource(R.string.input_label_y1)",
+            label = stringResource(R.string.calculator_input_label_h1),
             modifier = Modifier.weight(1f)
         )
     }
 }
 
 @Composable
-private fun EndPointSection(
+private fun TargetSection(
     state: CalculatorView.State,
     onAction: (UiAction) -> Unit
 ) {
-    SectionHeader(text = "stringResource(R.string.end_point_header)")
+    SectionHeader(text = stringResource(R.string.calculator_section_b_header))
     Row(
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
-        DecimalInputField(
-            value = state.inputX2,
+        TargetInputField(
+            value = state.targetWidth,
             onValueChange = { newText ->
-                onAction(
-                    UiAction.InputChange(
-                        inputX1 = state.inputX1,
-                        inputY1 = state.inputY1,
-                        inputX2 = newText,
-                        inputY2 = state.inputY2,
-                        inputX3 = state.inputX3
-                    )
-                )
+                onAction(UiAction.TargetWidthChange(newText))
             },
-            label = "stringResource(R.string.input_label_x2)",
-            modifier = Modifier.weight(1f)
-        )
-        DecimalInputField(
-            value = state.inputY2,
-            onValueChange = { newText ->
-                onAction(
-                    UiAction.InputChange(
-                        inputX1 = state.inputX1,
-                        inputY1 = state.inputY1,
-                        inputX2 = state.inputX2,
-                        inputY2 = newText,
-                        inputX3 = state.inputX3
-                    )
-                )
-            },
-            label = "stringResource(R.string.input_label_y2)",
-            modifier = Modifier.weight(1f)
-        )
-    }
-}
-
-@Composable
-private fun TargetValueSection(
-    state: CalculatorView.State,
-    onAction: (UiAction) -> Unit
-) {
-    val keyboardController = LocalSoftwareKeyboardController.current
-    SectionHeader(text = "stringResource(R.string.target_value_header)")
-    OutlinedTextField(
-        value = state.inputX3,
-        onValueChange = { newText ->
-            onAction(
-                UiAction.InputChange(
-                    inputX1 = state.inputX1,
-                    inputY1 = state.inputY1,
-                    inputX2 = state.inputX2,
-                    inputY2 = state.inputY2,
-                    inputX3 = newText
-                )
-            )
-        },
-        label = { Text("stringResource(R.string.input_label_x3)") },
-        singleLine = true,
-        keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Decimal,
-            imeAction = ImeAction.Done
-        ),
-        keyboardActions = KeyboardActions(
             onDone = {
                 if (state.ctaState == CalculatorView.State.CtaState.Enabled) {
                     onAction(UiAction.Calculate)
                 }
-                keyboardController?.hide()
-            }
-        ),
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp)
-    )
+            },
+            label = stringResource(R.string.calculator_input_label_w2),
+            modifier = Modifier.weight(1f)
+        )
+        TargetInputField(
+            value = state.targetHeight,
+            onValueChange = { newText ->
+                onAction(UiAction.TargetHeightChange(newText))
+            },
+            onDone = {
+                if (state.ctaState == CalculatorView.State.CtaState.Enabled) {
+                    onAction(UiAction.Calculate)
+                }
+            },
+            label = stringResource(R.string.calculator_input_label_h2),
+            modifier = Modifier.weight(1f)
+        )
+    }
 }
 
 @Composable
@@ -362,7 +299,7 @@ private fun CalculateButton(
 }
 
 @Composable
-private fun DecimalInputField(
+private fun SourceInputField(
     value: String,
     onValueChange: (String) -> Unit,
     label: String,
@@ -378,6 +315,37 @@ private fun DecimalInputField(
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Decimal,
             imeAction = ImeAction.Next
+        ),
+        modifier = modifier,
+        shape = RoundedCornerShape(12.dp)
+    )
+}
+
+@Composable
+private fun TargetInputField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    onDone: () -> Unit,
+    label: String,
+    modifier: Modifier
+) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+    OutlinedTextField(
+        value = value,
+        onValueChange = { newText ->
+            onValueChange(newText)
+        },
+        label = { Text(label) },
+        singleLine = true,
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Decimal,
+            imeAction = ImeAction.Done
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = {
+                onDone()
+                keyboardController?.hide()
+            }
         ),
         modifier = modifier,
         shape = RoundedCornerShape(12.dp)

@@ -28,6 +28,8 @@
     <string name="calculator_input_label_h1">Height (H1)</string>
     <string name="calculator_input_label_w2">Width (W2)</string>
     <string name="calculator_input_label_h2">Height (H2)</string>
-    <string name="calculator_start_point_header">Original Ratio / Size</string>
-    <string name="calculator_end_point_header">New Dimensions</string>
+    <string name="calculator_section_a_header">Original Ratio / Size</string>
+    <string name="calculator_section_b_header">New Dimensions</string>
+    <string name="error_zero_input">Zero numbers are not allowed as input</string>
+    <string name="error_target_values_all_filled">You should leave at least one number empty at new Dimensions section</string>
 </resources>

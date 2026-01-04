@@ -5,15 +5,23 @@ private const val EMPTY_STRING = ""
 object CalculatorView {
 
     data class State(
-        val inputX1: String = EMPTY_STRING,
-        val inputY1: String = EMPTY_STRING,
-        val inputX2: String = EMPTY_STRING,
-        val inputY2: String = EMPTY_STRING,
-        val inputX3: String = EMPTY_STRING,
+        val sourceWidth: String = EMPTY_STRING,
+        val sourceHeight: String = EMPTY_STRING,
+        val targetWidth: String = EMPTY_STRING,
+        val targetHeight: String = EMPTY_STRING,
+        val selectedRatioPreset: AspectRatioPreset = AspectRatioPreset.NONE,
         val result: String = EMPTY_STRING,
         val ctaState: CtaState = CtaState.Disabled,
         val isExplainerDialogVisible: Boolean = false
     ) {
+
+        enum class AspectRatioPreset {
+            NONE,
+            RATIO_1_1,
+            RATIO_4_3,
+            RATIO_16_9,
+            RATIO_21_9
+        }
 
         sealed interface CtaState {
             data object Enabled : CtaState
@@ -23,15 +31,11 @@ object CalculatorView {
     }
 
     sealed interface UiAction {
-
-        data class InputChange(
-            val inputX1: String,
-            val inputY1: String,
-            val inputX2: String,
-            val inputY2: String,
-            val inputX3: String
-        ) : UiAction
-
+        data class SourceWidthChange(val value: String) : UiAction
+        data class SourceHeightChange(val value: String) : UiAction
+        data class TargetWidthChange(val value: String) : UiAction
+        data class TargetHeightChange(val value: String) : UiAction
+        data class SelectRatioPreset(val aspectRatioPreset: State.AspectRatioPreset) : UiAction
         data object Calculate : UiAction
         data object Clear : UiAction
         data object OpenInfoScreen : UiAction
@@ -45,7 +49,7 @@ object CalculatorView {
     }
 
     sealed interface ErrorType {
-        data object IdenticalXInputs : ErrorType
-        data object NoNumbersInput : ErrorType
+        data object ZeroInput : ErrorType
+        data object TargetValuesAllFilled : ErrorType
     }
 }

@@ -2,9 +2,7 @@ package com.dimitriskatsikas.ratiocalculator.calculator.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dimitriskatsikas.ratiocalculator.calculator.domain.ComputeLinearInterpolationUseCase
-import com.dimitriskatsikas.ratiocalculator.calculator.domain.IdenticalXInputsException
-import com.dimitriskatsikas.ratiocalculator.calculator.domain.NoNumbersInputException
+import com.dimitriskatsikas.ratiocalculator.calculator.domain.ComputeAspectRatioUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -22,7 +20,7 @@ private const val EMPTY_STRING = ""
 
 @HiltViewModel
 class CalculatorViewModel @Inject constructor(
-    private val computeLinearInterpolationUseCase: ComputeLinearInterpolationUseCase
+    private val computeAspectRatioUseCase: ComputeAspectRatioUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(CalculatorView.State())
@@ -39,7 +37,6 @@ class CalculatorViewModel @Inject constructor(
     fun onUiAction(action: CalculatorView.UiAction) {
         when (action) {
             is CalculatorView.UiAction.Calculate -> calculate()
-            is CalculatorView.UiAction.InputChange -> onInputChange(action)
             CalculatorView.UiAction.Clear -> clearState()
             CalculatorView.UiAction.OpenInfoScreen -> {
                 _effect.trySend(CalculatorView.Effect.OpenInfoScreen)
@@ -47,6 +44,11 @@ class CalculatorViewModel @Inject constructor(
 
             CalculatorView.UiAction.DismissExplainerDialog -> setExplainerDialogVisibility(false)
             CalculatorView.UiAction.ShowExplainerDialog -> setExplainerDialogVisibility(true)
+            is CalculatorView.UiAction.SelectRatioPreset -> onSelectPreset(action.aspectRatioPreset)
+            is CalculatorView.UiAction.SourceHeightChange -> onSourceHeightChange(action.value)
+            is CalculatorView.UiAction.SourceWidthChange -> onSourceWidthChange(action.value)
+            is CalculatorView.UiAction.TargetHeightChange -> onTargetHeightChange(action.value)
+            is CalculatorView.UiAction.TargetWidthChange -> onTargetWidthChange(action.value)
         }
     }
 
@@ -60,12 +62,11 @@ class CalculatorViewModel @Inject constructor(
         viewModelScope.launch {
             val result = withContext(Dispatchers.Default) {
                 val currentState = _state.value
-                computeLinearInterpolationUseCase(
-                    inputX1 = currentState.inputX1,
-                    inputY1 = currentState.inputY1,
-                    inputX2 = currentState.inputX2,
-                    inputY2 = currentState.inputY2,
-                    inputX3 = currentState.inputX3
+                computeAspectRatioUseCase(
+                    sourceWidth = currentState.sourceWidth,
+                    sourceHeight = currentState.sourceHeight,
+                    targetWidth = currentState.targetWidth,
+                    targetHeight = currentState.targetHeight
                 )
             }
 
@@ -78,29 +79,55 @@ class CalculatorViewModel @Inject constructor(
                 }
             }.onFailure { exception ->
                 when (exception) {
-                    is NoNumbersInputException -> handleNoNumbersInputError()
-                    is IdenticalXInputsException -> handleIdenticalXInputsError()
+                    is ComputeAspectRatioUseCase.ZeroInputException -> handleZeroInputException()
+                    is ComputeAspectRatioUseCase.TargetValuesAllFilledException -> handleTargetValuesAllFilledException()
                     else -> Unit
                 }
             }
         }
     }
 
-    private fun onInputChange(action: CalculatorView.UiAction.InputChange) {
-        val areAllFieldsFilledWithNumbers = action.inputX1.toBigDecimalOrNull() != null &&
-                action.inputY1.toBigDecimalOrNull() != null &&
-                action.inputX2.toBigDecimalOrNull() != null &&
-                action.inputY2.toBigDecimalOrNull() != null &&
-                action.inputX3.toBigDecimalOrNull() != null
+    private fun handleTargetValuesAllFilledException() {
+        _state.update {
+            it.copy(
+                targetWidth = EMPTY_STRING,
+                targetHeight = EMPTY_STRING,
+                result = EMPTY_STRING
+            )
+        }
+        _effect.trySend(
+            CalculatorView.Effect.ShowErrorToast(
+                CalculatorView.ErrorType.TargetValuesAllFilled
+            )
+        )
+    }
+
+    private fun handleZeroInputException() {
+        _state.update {
+            it.copy(
+                result = EMPTY_STRING,
+            )
+        }
+        _effect.trySend(
+            CalculatorView.Effect.ShowErrorToast(
+                CalculatorView.ErrorType.ZeroInput
+            )
+        )
+    }
+
+    private fun onSelectPreset(preset: CalculatorView.State.AspectRatioPreset) {
+
+    }
+
+    private fun onSourceWidthChange(value: String) {
+        val areSectionAFieldsFilledWithNumbers = _state.value.sourceHeight.toBigDecimalOrNull() != null &&
+                value.toBigDecimalOrNull() != null
 
         _state.update {
             it.copy(
-                inputX1 = action.inputX1,
-                inputY1 = action.inputY1,
-                inputX2 = action.inputX2,
-                inputY2 = action.inputY2,
-                inputX3 = action.inputX3,
-                ctaState = if (areAllFieldsFilledWithNumbers) {
+                sourceWidth = value,
+                selectedRatioPreset = CalculatorView.State.AspectRatioPreset.NONE,
+                ctaState = if (areSectionAFieldsFilledWithNumbers) {
                     CalculatorView.State.CtaState.Enabled
                 } else {
                     CalculatorView.State.CtaState.Disabled
@@ -110,46 +137,56 @@ class CalculatorViewModel @Inject constructor(
         }
     }
 
+    private fun onSourceHeightChange(value: String) {
+        val areSectionAFieldsFilledWithNumbers = _state.value.sourceWidth.toBigDecimalOrNull() != null &&
+                value.toBigDecimalOrNull() != null
+
+        _state.update {
+            it.copy(
+                sourceHeight = value,
+                selectedRatioPreset = CalculatorView.State.AspectRatioPreset.NONE,
+                ctaState = if (areSectionAFieldsFilledWithNumbers) {
+                    CalculatorView.State.CtaState.Enabled
+                } else {
+                    CalculatorView.State.CtaState.Disabled
+                },
+                result = EMPTY_STRING
+            )
+        }
+    }
+
+    private fun onTargetWidthChange(value: String) {
+        _state.update {
+            it.copy(
+                targetWidth = value,
+                targetHeight = "",
+                result = EMPTY_STRING
+            )
+        }
+    }
+
+    private fun onTargetHeightChange(value: String) {
+        _state.update {
+            it.copy(
+                targetWidth = "",
+                targetHeight = value,
+                result = EMPTY_STRING
+            )
+        }
+    }
+
     private fun clearState() {
         _state.update {
             it.copy(
-                inputX1 = EMPTY_STRING,
-                inputY1 = EMPTY_STRING,
-                inputX2 = EMPTY_STRING,
-                inputY2 = EMPTY_STRING,
-                inputX3 = EMPTY_STRING,
+                sourceWidth = EMPTY_STRING,
+                sourceHeight = EMPTY_STRING,
+                targetWidth = EMPTY_STRING,
+                targetHeight = EMPTY_STRING,
+                selectedRatioPreset = CalculatorView.State.AspectRatioPreset.NONE,
                 result = EMPTY_STRING,
                 ctaState = CalculatorView.State.CtaState.Disabled
             )
         }
-    }
-
-    private fun handleIdenticalXInputsError() {
-        _state.update {
-            it.copy(
-                result = EMPTY_STRING,
-                ctaState = CalculatorView.State.CtaState.Enabled,
-            )
-        }
-        _effect.trySend(
-            CalculatorView.Effect.ShowErrorToast(
-                CalculatorView.ErrorType.IdenticalXInputs
-            )
-        )
-    }
-
-    private fun handleNoNumbersInputError() {
-        _state.update {
-            it.copy(
-                result = EMPTY_STRING,
-                ctaState = CalculatorView.State.CtaState.Disabled,
-            )
-        }
-        _effect.trySend(
-            CalculatorView.Effect.ShowErrorToast(
-                CalculatorView.ErrorType.NoNumbersInput
-            )
-        )
     }
 
     private fun setExplainerDialogVisibility(visible: Boolean) {

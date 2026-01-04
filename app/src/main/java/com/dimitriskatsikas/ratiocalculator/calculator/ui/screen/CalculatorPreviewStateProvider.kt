@@ -8,68 +8,95 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
 
     override val values = sequenceOf(
         CalculatorView.State(
-            inputX1 = "",
-            inputY1 = "",
-            inputX2 = "",
-            inputY2 = "",
-            inputX3 = "",
+            sourceWidth = "",
+            sourceHeight = "",
+            targetWidth = "",
+            targetHeight = "",
             result = "",
             ctaState = CtaState.Disabled
         ),
         CalculatorView.State(
-            inputX1 = "",
-            inputY1 = "",
-            inputX2 = "",
-            inputY2 = "",
-            inputX3 = "",
+            sourceWidth = "",
+            sourceHeight = "",
+            targetWidth = "",
+            targetHeight = "",
             result = "",
             ctaState = CtaState.Disabled,
             isExplainerDialogVisible = true
         ),
         CalculatorView.State(
-            inputX1 = "1",
-            inputY1 = "100",
-            inputX2 = "2",
-            inputY2 = "200",
-            inputX3 = "1.5",
+            sourceWidth = "1920",
+            sourceHeight = "",
+            targetWidth = "",
+            targetHeight = "",
+            result = "",
+            ctaState = CtaState.Disabled
+        ),
+        CalculatorView.State(
+            sourceWidth = "",
+            sourceHeight = "1080",
+            targetWidth = "",
+            targetHeight = "",
+            result = "",
+            ctaState = CtaState.Disabled
+        ),
+        CalculatorView.State(
+            sourceWidth = "16",
+            sourceHeight = "9",
+            targetWidth = "",
+            targetHeight = "",
             result = "",
             ctaState = CtaState.Enabled
         ),
         CalculatorView.State(
-            inputX1 = "1",
-            inputY1 = "100",
-            inputX2 = "2",
-            inputY2 = "200",
-            inputX3 = "1.5",
+            sourceWidth = "16",
+            sourceHeight = "9",
+            targetWidth = "1920",
+            targetHeight = "",
+            result = "",
+            selectedRatioPreset = CalculatorView.State.AspectRatioPreset.RATIO_16_9,
+            ctaState = CtaState.Enabled
+        ),
+        CalculatorView.State(
+            sourceWidth = "16",
+            sourceHeight = "9",
+            targetWidth = "",
+            targetHeight = "",
             result = "",
             ctaState = CtaState.Loading
         ),
         CalculatorView.State(
-            inputX1 = "1",
-            inputY1 = "100",
-            inputX2 = "2",
-            inputY2 = "200",
-            inputX3 = "1.5",
-            result = "150",
-            ctaState = CtaState.Enabled
+            sourceWidth = "16",
+            sourceHeight = "9",
+            targetWidth = "1920",
+            targetHeight = "",
+            result = "",
+            ctaState = CtaState.Loading
         ),
-        // more test cases for screenshots
         CalculatorView.State(
-            inputX1 = "0",
-            inputY1 = "0",
-            inputX2 = "100",
-            inputY2 = "50",
-            inputX3 = "50",
-            result = "25",
+            sourceWidth = "16",
+            sourceHeight = "9",
+            targetWidth = "1920",
+            targetHeight = "",
+            result = "The outcome is 1080",
+            selectedRatioPreset = CalculatorView.State.AspectRatioPreset.RATIO_16_9,
             ctaState = CtaState.Enabled
         ),
         CalculatorView.State(
-            inputX1 = "1.5",
-            inputY1 = "9.81",
-            inputX2 = "3.5",
-            inputY2 = "19.62",
-            inputX3 = "2.5",
-            result = "14.715",
+            sourceWidth = "16",
+            sourceHeight = "9",
+            targetWidth = "",
+            targetHeight = "1080",
+            result = "The outcome is 1920",
+            selectedRatioPreset = CalculatorView.State.AspectRatioPreset.RATIO_16_9,
+            ctaState = CtaState.Enabled
+        ),
+        CalculatorView.State(
+            sourceWidth = "1920",
+            sourceHeight = "1080",
+            targetWidth = "",
+            targetHeight = "",
+            result = "The outcome is only aspect ratio",
             ctaState = CtaState.Enabled
         )
     )
