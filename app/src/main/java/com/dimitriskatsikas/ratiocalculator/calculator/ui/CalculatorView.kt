@@ -5,10 +5,10 @@ private const val EMPTY_STRING = ""
 object CalculatorView {
 
     data class State(
-        val sourceWidth: String = EMPTY_STRING,
-        val sourceHeight: String = EMPTY_STRING,
-        val targetWidth: String = EMPTY_STRING,
-        val targetHeight: String = EMPTY_STRING,
+        val originalWidth: String = EMPTY_STRING,
+        val originalHeight: String = EMPTY_STRING,
+        val newWidth: String = EMPTY_STRING,
+        val newHeight: String = EMPTY_STRING,
         val selectedRatioPreset: AspectRatioPreset = AspectRatioPreset.NONE,
         val result: String = EMPTY_STRING,
         val ctaState: CtaState = CtaState.Disabled,
@@ -31,10 +31,10 @@ object CalculatorView {
     }
 
     sealed interface UiAction {
-        data class SourceWidthChange(val value: String) : UiAction
-        data class SourceHeightChange(val value: String) : UiAction
-        data class TargetWidthChange(val value: String) : UiAction
-        data class TargetHeightChange(val value: String) : UiAction
+        data class OriginalWidthChange(val value: String) : UiAction
+        data class OriginalHeightChange(val value: String) : UiAction
+        data class NewWidthChange(val value: String) : UiAction
+        data class NewHeightChange(val value: String) : UiAction
         data class SelectRatioPreset(val aspectRatioPreset: State.AspectRatioPreset) : UiAction
         data object Calculate : UiAction
         data object Clear : UiAction

@@ -172,19 +172,19 @@ private fun SourceSection(
         modifier = Modifier.fillMaxWidth()
     ) {
         SourceInputField(
-            value = state.sourceWidth,
+            value = state.originalWidth,
             onValueChange = { newText ->
-                onAction(UiAction.SourceWidthChange(newText))
+                onAction(UiAction.OriginalWidthChange(newText))
             },
-            label = stringResource(R.string.calculator_input_label_w1),
+            label = stringResource(R.string.calculator_input_label_width),
             modifier = Modifier.weight(1f)
         )
         SourceInputField(
-            value = state.sourceHeight,
+            value = state.originalHeight,
             onValueChange = { newText ->
-                onAction(UiAction.SourceHeightChange(newText))
+                onAction(UiAction.OriginalHeightChange(newText))
             },
-            label = stringResource(R.string.calculator_input_label_h1),
+            label = stringResource(R.string.calculator_input_label_height),
             modifier = Modifier.weight(1f)
         )
     }
@@ -201,29 +201,29 @@ private fun TargetSection(
         modifier = Modifier.fillMaxWidth()
     ) {
         TargetInputField(
-            value = state.targetWidth,
+            value = state.newWidth,
             onValueChange = { newText ->
-                onAction(UiAction.TargetWidthChange(newText))
+                onAction(UiAction.NewWidthChange(newText))
             },
             onDone = {
                 if (state.ctaState == CalculatorView.State.CtaState.Enabled) {
                     onAction(UiAction.Calculate)
                 }
             },
-            label = stringResource(R.string.calculator_input_label_w2),
+            label = stringResource(R.string.calculator_input_label_width),
             modifier = Modifier.weight(1f)
         )
         TargetInputField(
-            value = state.targetHeight,
+            value = state.newHeight,
             onValueChange = { newText ->
-                onAction(UiAction.TargetHeightChange(newText))
+                onAction(UiAction.NewHeightChange(newText))
             },
             onDone = {
                 if (state.ctaState == CalculatorView.State.CtaState.Enabled) {
                     onAction(UiAction.Calculate)
                 }
             },
-            label = stringResource(R.string.calculator_input_label_h2),
+            label = stringResource(R.string.calculator_input_label_height),
             modifier = Modifier.weight(1f)
         )
     }

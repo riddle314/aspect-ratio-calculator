@@ -24,12 +24,10 @@
     <string name="info_rate_this_app">Rate this App</string>
     <string name="info_rate_this_app_subtitle">Like the calculator? Leave a review!</string>
     <string name="info_google_play_store_url" translatable="false">https://play.google.com/store/apps/details?id=%1$s</string>
-    <string name="calculator_input_label_w1">Width (W1)</string>
-    <string name="calculator_input_label_h1">Height (H1)</string>
-    <string name="calculator_input_label_w2">Width (W2)</string>
-    <string name="calculator_input_label_h2">Height (H2)</string>
-    <string name="calculator_section_a_header">Original Ratio / Size</string>
-    <string name="calculator_section_b_header">New Dimensions</string>
+    <string name="calculator_input_label_width">Width</string>
+    <string name="calculator_input_label_height">Height</string>
+    <string name="calculator_section_a_header">Original Size</string>
+    <string name="calculator_section_b_header">New Size</string>
     <string name="error_zero_input">Zero numbers are not allowed as input</string>
     <string name="error_target_values_all_filled">You should leave at least one number empty at new Dimensions section</string>
 </resources>

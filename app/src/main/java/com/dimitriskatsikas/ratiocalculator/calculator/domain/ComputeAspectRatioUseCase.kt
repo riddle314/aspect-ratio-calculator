@@ -5,10 +5,10 @@ import javax.inject.Inject
 class ComputeAspectRatioUseCase @Inject constructor() {
 
     operator fun invoke(
-        sourceWidth: String,
-        sourceHeight: String,
-        targetWidth: String,
-        targetHeight: String
+        originalWidth: String,
+        originalHeight: String,
+        newWidth: String,
+        newHeight: String
     ): Result<String> {
         return runCatching {
             "Result is"

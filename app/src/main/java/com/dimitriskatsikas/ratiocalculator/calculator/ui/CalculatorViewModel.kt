@@ -45,10 +45,10 @@ class CalculatorViewModel @Inject constructor(
             CalculatorView.UiAction.DismissExplainerDialog -> setExplainerDialogVisibility(false)
             CalculatorView.UiAction.ShowExplainerDialog -> setExplainerDialogVisibility(true)
             is CalculatorView.UiAction.SelectRatioPreset -> onSelectPreset(action.aspectRatioPreset)
-            is CalculatorView.UiAction.SourceHeightChange -> onSourceHeightChange(action.value)
-            is CalculatorView.UiAction.SourceWidthChange -> onSourceWidthChange(action.value)
-            is CalculatorView.UiAction.TargetHeightChange -> onTargetHeightChange(action.value)
-            is CalculatorView.UiAction.TargetWidthChange -> onTargetWidthChange(action.value)
+            is CalculatorView.UiAction.OriginalHeightChange -> onOriginalHeightChange(action.value)
+            is CalculatorView.UiAction.OriginalWidthChange -> onOriginalWidthChange(action.value)
+            is CalculatorView.UiAction.NewHeightChange -> onNewHeightChange(action.value)
+            is CalculatorView.UiAction.NewWidthChange -> onNewWidthChange(action.value)
         }
     }
 
@@ -63,10 +63,10 @@ class CalculatorViewModel @Inject constructor(
             val result = withContext(Dispatchers.Default) {
                 val currentState = _state.value
                 computeAspectRatioUseCase(
-                    sourceWidth = currentState.sourceWidth,
-                    sourceHeight = currentState.sourceHeight,
-                    targetWidth = currentState.targetWidth,
-                    targetHeight = currentState.targetHeight
+                    originalWidth = currentState.originalWidth,
+                    originalHeight = currentState.originalHeight,
+                    newWidth = currentState.newWidth,
+                    newHeight = currentState.newHeight
                 )
             }
 
@@ -90,8 +90,8 @@ class CalculatorViewModel @Inject constructor(
     private fun handleTargetValuesAllFilledException() {
         _state.update {
             it.copy(
-                targetWidth = EMPTY_STRING,
-                targetHeight = EMPTY_STRING,
+                newWidth = EMPTY_STRING,
+                newHeight = EMPTY_STRING,
                 result = EMPTY_STRING
             )
         }
@@ -119,13 +119,13 @@ class CalculatorViewModel @Inject constructor(
 
     }
 
-    private fun onSourceWidthChange(value: String) {
-        val areSectionAFieldsFilledWithNumbers = _state.value.sourceHeight.toBigDecimalOrNull() != null &&
+    private fun onOriginalWidthChange(value: String) {
+        val areSectionAFieldsFilledWithNumbers = _state.value.originalHeight.toBigDecimalOrNull() != null &&
                 value.toBigDecimalOrNull() != null
 
         _state.update {
             it.copy(
-                sourceWidth = value,
+                originalWidth = value,
                 selectedRatioPreset = CalculatorView.State.AspectRatioPreset.NONE,
                 ctaState = if (areSectionAFieldsFilledWithNumbers) {
                     CalculatorView.State.CtaState.Enabled
@@ -137,13 +137,13 @@ class CalculatorViewModel @Inject constructor(
         }
     }
 
-    private fun onSourceHeightChange(value: String) {
-        val areSectionAFieldsFilledWithNumbers = _state.value.sourceWidth.toBigDecimalOrNull() != null &&
+    private fun onOriginalHeightChange(value: String) {
+        val areSectionAFieldsFilledWithNumbers = _state.value.originalWidth.toBigDecimalOrNull() != null &&
                 value.toBigDecimalOrNull() != null
 
         _state.update {
             it.copy(
-                sourceHeight = value,
+                originalHeight = value,
                 selectedRatioPreset = CalculatorView.State.AspectRatioPreset.NONE,
                 ctaState = if (areSectionAFieldsFilledWithNumbers) {
                     CalculatorView.State.CtaState.Enabled
@@ -155,21 +155,21 @@ class CalculatorViewModel @Inject constructor(
         }
     }
 
-    private fun onTargetWidthChange(value: String) {
+    private fun onNewWidthChange(value: String) {
         _state.update {
             it.copy(
-                targetWidth = value,
-                targetHeight = "",
+                newWidth = value,
+                newHeight = "",
                 result = EMPTY_STRING
             )
         }
     }
 
-    private fun onTargetHeightChange(value: String) {
+    private fun onNewHeightChange(value: String) {
         _state.update {
             it.copy(
-                targetWidth = "",
-                targetHeight = value,
+                newWidth = "",
+                newHeight = value,
                 result = EMPTY_STRING
             )
         }
@@ -178,10 +178,10 @@ class CalculatorViewModel @Inject constructor(
     private fun clearState() {
         _state.update {
             it.copy(
-                sourceWidth = EMPTY_STRING,
-                sourceHeight = EMPTY_STRING,
-                targetWidth = EMPTY_STRING,
-                targetHeight = EMPTY_STRING,
+                originalWidth = EMPTY_STRING,
+                originalHeight = EMPTY_STRING,
+                newWidth = EMPTY_STRING,
+                newHeight = EMPTY_STRING,
                 selectedRatioPreset = CalculatorView.State.AspectRatioPreset.NONE,
                 result = EMPTY_STRING,
                 ctaState = CalculatorView.State.CtaState.Disabled
