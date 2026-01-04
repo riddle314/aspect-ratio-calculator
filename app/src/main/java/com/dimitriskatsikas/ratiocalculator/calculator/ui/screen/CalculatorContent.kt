@@ -29,6 +29,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ContentCopy
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Lightbulb
+import androidx.compose.material.icons.outlined.Link
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -197,7 +198,8 @@ private fun TargetSection(
 ) {
     SectionHeader(text = stringResource(R.string.calculator_section_b_header))
     Row(
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.fillMaxWidth()
     ) {
         TargetInputField(
@@ -212,6 +214,11 @@ private fun TargetSection(
             },
             label = stringResource(R.string.calculator_input_label_width),
             modifier = Modifier.weight(1f)
+        )
+        Icon(
+            imageVector = Icons.Outlined.Link,
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
         )
         TargetInputField(
             value = state.newHeight,
@@ -336,6 +343,7 @@ private fun TargetInputField(
             onValueChange(newText)
         },
         label = { Text(label) },
+        placeholder = { Text(stringResource(R.string.calculator_target_input_field_placeholder)) },
         singleLine = true,
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Decimal,
