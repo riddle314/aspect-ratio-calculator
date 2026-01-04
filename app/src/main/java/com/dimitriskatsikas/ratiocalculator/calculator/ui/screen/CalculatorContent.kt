@@ -87,7 +87,7 @@ fun CalculatorContent(
                         Icon(
                             imageVector = Icons.Outlined.Lightbulb,
                             contentDescription = stringResource(
-                                id = R.string.help_icon_content_description
+                                id = R.string.calculator_help_icon_content_description
                             )
                         )
                     }
@@ -95,7 +95,7 @@ fun CalculatorContent(
                         Icon(
                             imageVector = Icons.Outlined.Info,
                             contentDescription = stringResource(
-                                R.string.info_icon_content_description
+                                R.string.calculator_info_icon_content_description
                             )
                         )
                     }
@@ -301,7 +301,7 @@ private fun ClearButton(onAction: (UiAction) -> Unit) {
         onClick = { onAction(UiAction.Clear) },
         enabled = true
     ) {
-        Text(text = stringResource(R.string.clear_fields))
+        Text(text = stringResource(R.string.calculator_clear_fields))
     }
 }
 
@@ -331,7 +331,7 @@ private fun CalculateButton(
             onClick = { },
             enabled = false
         ) {
-            Text(text = stringResource(R.string.calculate))
+            Text(text = stringResource(R.string.calculator_calculate))
         }
 
         CalculatorView.State.CtaState.Enabled -> Button(
@@ -343,7 +343,7 @@ private fun CalculateButton(
                 onAction(UiAction.Calculate)
             }
         ) {
-            Text(text = stringResource(R.string.calculate))
+            Text(text = stringResource(R.string.calculator_calculate))
         }
 
         CalculatorView.State.CtaState.Loading -> Button(
@@ -391,8 +391,8 @@ private fun ResultCard(
     val context = LocalContext.current
     val clipboardManager = context.getSystemService(ClipboardManager::class.java)
     val interactionSource = remember { MutableInteractionSource() }
-    val toastMessage = stringResource(id = R.string.result_copied_toast_message)
-    val resultLabel = stringResource(id = R.string.copied_result_label)
+    val toastMessage = stringResource(id = R.string.calculator_result_copied_toast_message)
+    val resultLabel = stringResource(id = R.string.calculator_copied_result_label)
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -429,14 +429,14 @@ private fun ResultCard(
                 modifier = Modifier.padding(bottom = 4.dp)
             ) {
                 Text(
-                    text = stringResource(R.string.result_y),
+                    text = stringResource(R.string.calculator_result_value),
                     style = MaterialTheme.typography.titleSmall,
                     color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Icon(
                     imageVector = Icons.Outlined.ContentCopy,
-                    contentDescription = stringResource(R.string.tap_to_copy_label),
+                    contentDescription = stringResource(R.string.calculator_tap_to_copy_label),
                     modifier = Modifier.size(16.dp),
                     tint = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
                 )

@@ -1,27 +1,33 @@
 <resources>
-<string name="app_name">Ratio Calc</string>
-<string name="full_app_name">Aspect Ratio Calculator</string>
-<string name="info_icon_content_description">Info</string>
-<string name="back_icon_content_description">Back</string>
-<string name="clear_fields">Clear fields</string>
-<string name="result_y">Result</string>
-<string name="tap_to_copy_label">Tap to copy</string>
-<string name="calculate">Calculate</string>
-<string name="info_screen_title">Info</string>
-<string name="result_copied_toast_message">Result copied!</string>
-<string name="copied_result_label">Copied Result</string>
-<string name="ad_banner_preview_text" translatable="false">Google Mobile Ads preview banner.</string>
-<string name="privacy_policy_title">Privacy Policy</string>
-<string name="privacy_policy_url" translatable="false">https://sites.google.com/view/interpolator-privacy-policy</string>
-<string name="explainer_dialog_title">How It Works</string>
-<string name="explainer_dialog_image_content_description">Aspect Ratio Calculator diagram</string>
-<string name="explainer_dialog_body">Explainer</string>
-<string name="explainer_dialog_dismiss_button">Got it</string>
-<string name="help_icon_content_description">How it works</string>
-<string name="app_icon_content_description">App Icon</string>
-<string name="developed_by">Developed by</string>
-<string name="developer_name">Dimitris Katsikas</string>
-<string name="rate_this_app">Rate this App</string>
-<string name="rate_this_app_subtitle">Like the calculator? Leave a review!</string>
-<string name="google_play_store_url" translatable="false">https://play.google.com/store/apps/details?id=%1$s</string>
+    <string name="app_name">Ratio Calc</string>
+    <string name="full_app_name">Aspect Ratio Calculator</string>
+    <string name="calculator_info_icon_content_description">Info</string>
+    <string name="info_back_icon_content_description">Back</string>
+    <string name="calculator_clear_fields">Clear fields</string>
+    <string name="calculator_result_value">Result</string>
+    <string name="calculator_tap_to_copy_label">Tap to copy</string>
+    <string name="calculator_calculate">Calculate</string>
+    <string name="info_screen_title">Info</string>
+    <string name="calculator_result_copied_toast_message">Result copied!</string>
+    <string name="calculator_copied_result_label">Copied Result</string>
+    <string name="calculator_ad_banner_preview_text" translatable="false">Google Mobile Ads preview banner.</string>
+    <string name="info_privacy_policy_title">Privacy Policy</string>
+    <string name="info_privacy_policy_url" translatable="false">https://sites.google.com/view/interpolator-privacy-policy</string>
+    <string name="explainer_dialog_title">How It Works</string>
+    <string name="explainer_dialog_image_content_description">Aspect Ratio Calculator diagram</string>
+    <string name="explainer_dialog_body">Explainer</string>
+    <string name="explainer_dialog_dismiss_button">Got it</string>
+    <string name="calculator_help_icon_content_description">How it works</string>
+    <string name="info_app_icon_content_description">App Icon</string>
+    <string name="info_developed_by">Developed by</string>
+    <string name="info_developer_name">Dimitris Katsikas</string>
+    <string name="info_rate_this_app">Rate this App</string>
+    <string name="info_rate_this_app_subtitle">Like the calculator? Leave a review!</string>
+    <string name="info_google_play_store_url" translatable="false">https://play.google.com/store/apps/details?id=%1$s</string>
+    <string name="calculator_input_label_w1">Width (W1)</string>
+    <string name="calculator_input_label_h1">Height (H1)</string>
+    <string name="calculator_input_label_w2">Width (W2)</string>
+    <string name="calculator_input_label_h2">Height (H2)</string>
+    <string name="calculator_start_point_header">Original Ratio / Size</string>
+    <string name="calculator_end_point_header">New Dimensions</string>
 </resources>

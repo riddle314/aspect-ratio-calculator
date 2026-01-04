@@ -62,7 +62,7 @@ fun InfoContent(
                         Icon(
                             imageVector = Icons.AutoMirrored.Outlined.ArrowBack,
                             contentDescription = stringResource(
-                                R.string.back_icon_content_description
+                                R.string.info_back_icon_content_description
                             )
                         )
                     }
@@ -110,7 +110,7 @@ private fun Content(
 private fun AppBranding(state: InfoView.State) {
     Image(
         painter = painterResource(id = R.drawable.ic_launcher_foreground),
-        contentDescription = stringResource(R.string.app_icon_content_description),
+        contentDescription = stringResource(R.string.info_app_icon_content_description),
         modifier = Modifier
             .size(100.dp)
             .clip(RoundedCornerShape(20.dp))
@@ -133,8 +133,8 @@ private fun AppBranding(state: InfoView.State) {
 @Composable
 private fun DeveloperItem() {
     ListItem(
-        headlineContent = { Text(stringResource(R.string.developed_by)) },
-        supportingContent = { Text(stringResource(R.string.developer_name)) },
+        headlineContent = { Text(stringResource(R.string.info_developed_by)) },
+        supportingContent = { Text(stringResource(R.string.info_developer_name)) },
         leadingContent = {
             Icon(
                 imageVector = Icons.Outlined.Person,
@@ -146,12 +146,12 @@ private fun DeveloperItem() {
 
 @Composable
 private fun PrivacyPolicyItem(onAction: (InfoView.UiAction) -> Unit) {
-    val privacyPolicyUrl = stringResource(R.string.privacy_policy_url)
+    val privacyPolicyUrl = stringResource(R.string.info_privacy_policy_url)
     ListItem(
         modifier = Modifier.clickable {
             onAction(InfoView.UiAction.OnPolicyClicked(url = privacyPolicyUrl))
         },
-        headlineContent = { Text(stringResource(R.string.privacy_policy_title)) },
+        headlineContent = { Text(stringResource(R.string.info_privacy_policy_title)) },
         leadingContent = {
             Icon(
                 imageVector = Icons.Outlined.PrivacyTip,
@@ -173,15 +173,15 @@ private fun RateAppItem(onAction: (InfoView.UiAction) -> Unit) {
     val context = LocalContext.current
     val appPackageName = context.packageName
     val googlePlayStoreUrl = stringResource(
-        id = R.string.google_play_store_url,
+        id = R.string.info_google_play_store_url,
         appPackageName
     )
     ListItem(
         modifier = Modifier.clickable {
             onAction(InfoView.UiAction.OnRateClicked(url = googlePlayStoreUrl))
         },
-        headlineContent = { Text(stringResource(R.string.rate_this_app)) },
-        supportingContent = { Text(stringResource(R.string.rate_this_app_subtitle)) },
+        headlineContent = { Text(stringResource(R.string.info_rate_this_app)) },
+        supportingContent = { Text(stringResource(R.string.info_rate_this_app_subtitle)) },
         leadingContent = {
             Icon(
                 imageVector = Icons.Outlined.Star,

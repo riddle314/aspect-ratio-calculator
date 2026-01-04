@@ -54,7 +54,7 @@ private fun ActualAd() {
 private fun PreviewAdPlaceholder(modifier: Modifier = Modifier) {
     Box(modifier = modifier) {
         Text(
-            text = stringResource(R.string.ad_banner_preview_text),
+            text = stringResource(R.string.calculator_ad_banner_preview_text),
             modifier = Modifier.align(Alignment.Center)
         )
     }
