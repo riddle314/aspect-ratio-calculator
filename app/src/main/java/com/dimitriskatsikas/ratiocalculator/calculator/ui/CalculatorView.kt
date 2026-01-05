@@ -19,8 +19,7 @@ object CalculatorView {
             RATIO_1_1(width = "1", height = "1"),
             RATIO_4_3(width = "4", height = "3"),
             RATIO_16_9(width = "19", height = "9"),
-            RATIO_21_9(width = "21", height = "9"),
-            CLEAR(width = "", height = "")
+            RATIO_21_9(width = "21", height = "9")
         }
 
         sealed interface CtaState {

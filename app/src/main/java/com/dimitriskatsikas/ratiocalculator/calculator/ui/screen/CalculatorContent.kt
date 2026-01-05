@@ -219,11 +219,7 @@ private fun RatioPresets(
                 onClick = { onAction(UiAction.SelectAspectRatio(aspectRatio)) },
                 label = {
                     Text(
-                        text = if (aspectRatio == CalculatorView.State.AspectRatioPreset.CLEAR) {
-                            stringResource(R.string.calculator_preset_clear)
-                        } else {
-                            "${aspectRatio.width}:${aspectRatio.height}"
-                        },
+                        text = "${aspectRatio.width}:${aspectRatio.height}",
                         style = MaterialTheme.typography.labelLarge
                     )
                 },
