@@ -5,6 +5,7 @@ import android.content.ClipboardManager
 import android.os.Build
 import android.widget.Toast
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -56,7 +57,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
@@ -99,7 +102,7 @@ fun CalculatorContent(
                         Icon(
                             imageVector = Icons.Outlined.Info,
                             contentDescription = stringResource(
-                                R.string.calculator_info_icon_content_description
+                                id = R.string.calculator_info_icon_content_description
                             )
                         )
                     }
@@ -140,11 +143,15 @@ fun MainContent(
     onAction: (UiAction) -> Unit
 ) {
     val scrollState = rememberScrollState()
+    val focusManager = LocalFocusManager.current
     Column(
         modifier = Modifier
             .padding(paddingValues)
             .verticalScroll(scrollState)
             .padding(horizontal = 16.dp)
+            .pointerInput(Unit) {
+                detectTapGestures { focusManager.clearFocus() }
+            }
     ) {
         Spacer(Modifier.height(24.dp))
         SourceSection(state, onAction)
@@ -371,7 +378,7 @@ private fun TargetInputField(
     label: String,
     modifier: Modifier
 ) {
-    val keyboardController = LocalSoftwareKeyboardController.current
+    val focusManager = LocalFocusManager.current
     OutlinedTextField(
         value = value,
         onValueChange = { newText ->
@@ -386,8 +393,8 @@ private fun TargetInputField(
         ),
         keyboardActions = KeyboardActions(
             onDone = {
+                focusManager.clearFocus()
                 onDone()
-                keyboardController?.hide()
             }
         ),
         modifier = modifier,
