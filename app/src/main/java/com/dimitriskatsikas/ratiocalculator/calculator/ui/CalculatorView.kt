@@ -5,22 +5,22 @@ private const val EMPTY_STRING = ""
 object CalculatorView {
 
     data class State(
+        val aspectRatioPresets: List<AspectRatioPreset> = AspectRatioPreset.entries,
         val originalWidth: String = EMPTY_STRING,
         val originalHeight: String = EMPTY_STRING,
         val newWidth: String = EMPTY_STRING,
         val newHeight: String = EMPTY_STRING,
-        val selectedRatioPreset: AspectRatioPreset = AspectRatioPreset.NONE,
         val result: String = EMPTY_STRING,
         val ctaState: CtaState = CtaState.Disabled,
         val isExplainerDialogVisible: Boolean = false
     ) {
 
-        enum class AspectRatioPreset {
-            NONE,
-            RATIO_1_1,
-            RATIO_4_3,
-            RATIO_16_9,
-            RATIO_21_9
+        enum class AspectRatioPreset(val width: String, val height: String) {
+            RATIO_1_1(width = "1", height = "1"),
+            RATIO_4_3(width = "4", height = "3"),
+            RATIO_16_9(width = "19", height = "9"),
+            RATIO_21_9(width = "21", height = "9"),
+            CLEAR(width = "", height = "")
         }
 
         sealed interface CtaState {
@@ -35,7 +35,7 @@ object CalculatorView {
         data class OriginalHeightChange(val value: String) : UiAction
         data class NewWidthChange(val value: String) : UiAction
         data class NewHeightChange(val value: String) : UiAction
-        data class SelectRatioPreset(val aspectRatioPreset: State.AspectRatioPreset) : UiAction
+        data class SelectAspectRatio(val aspectRatioPreset: State.AspectRatioPreset) : UiAction
         data object Calculate : UiAction
         data object Clear : UiAction
         data object OpenInfoScreen : UiAction

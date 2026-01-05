@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -30,6 +32,7 @@ import androidx.compose.material.icons.outlined.ContentCopy
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Lightbulb
 import androidx.compose.material.icons.outlined.Link
+import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -168,6 +171,10 @@ private fun SourceSection(
     onAction: (UiAction) -> Unit
 ) {
     SectionHeader(text = stringResource(R.string.calculator_section_a_header))
+    RatioPresets(
+        state = state,
+        onAction = onAction
+    )
     Row(
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         modifier = Modifier.fillMaxWidth()
@@ -188,6 +195,34 @@ private fun SourceSection(
             label = stringResource(R.string.calculator_input_label_height),
             modifier = Modifier.weight(1f)
         )
+    }
+}
+
+@Composable
+private fun RatioPresets(
+    state: CalculatorView.State,
+    onAction: (UiAction) -> Unit
+) {
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = Modifier.padding(bottom = 8.dp)
+    ) {
+        items(state.aspectRatioPresets) { aspectRatio ->
+            AssistChip(
+                onClick = { onAction(UiAction.SelectAspectRatio(aspectRatio)) },
+                label = {
+                    Text(
+                        text = if (aspectRatio == CalculatorView.State.AspectRatioPreset.CLEAR) {
+                            stringResource(R.string.calculator_preset_clear)
+                        } else {
+                            "${aspectRatio.width}:${aspectRatio.height}"
+                        },
+                        style = MaterialTheme.typography.labelLarge
+                    )
+                },
+                shape = RoundedCornerShape(8.dp)
+            )
+        }
     }
 }
 
@@ -218,7 +253,7 @@ private fun TargetSection(
         Icon(
             imageVector = Icons.Outlined.Link,
             contentDescription = null,
-            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+            tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
         )
         TargetInputField(
             value = state.newHeight,

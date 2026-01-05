@@ -54,7 +54,6 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             newWidth = "1920",
             newHeight = "",
             result = "",
-            selectedRatioPreset = CalculatorView.State.AspectRatioPreset.RATIO_16_9,
             ctaState = CtaState.Enabled
         ),
         CalculatorView.State(
@@ -79,7 +78,6 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             newWidth = "1920",
             newHeight = "",
             result = "The outcome is 1080",
-            selectedRatioPreset = CalculatorView.State.AspectRatioPreset.RATIO_16_9,
             ctaState = CtaState.Enabled
         ),
         CalculatorView.State(
@@ -88,7 +86,6 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             newWidth = "",
             newHeight = "1080",
             result = "The outcome is 1920",
-            selectedRatioPreset = CalculatorView.State.AspectRatioPreset.RATIO_16_9,
             ctaState = CtaState.Enabled
         ),
         CalculatorView.State(

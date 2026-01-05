@@ -44,7 +44,7 @@ class CalculatorViewModel @Inject constructor(
 
             CalculatorView.UiAction.DismissExplainerDialog -> setExplainerDialogVisibility(false)
             CalculatorView.UiAction.ShowExplainerDialog -> setExplainerDialogVisibility(true)
-            is CalculatorView.UiAction.SelectRatioPreset -> onSelectPreset(action.aspectRatioPreset)
+            is CalculatorView.UiAction.SelectAspectRatio -> onAspectRatioSelection(action.aspectRatioPreset)
             is CalculatorView.UiAction.OriginalHeightChange -> onOriginalHeightChange(action.value)
             is CalculatorView.UiAction.OriginalWidthChange -> onOriginalWidthChange(action.value)
             is CalculatorView.UiAction.NewHeightChange -> onNewHeightChange(action.value)
@@ -115,19 +115,32 @@ class CalculatorViewModel @Inject constructor(
         )
     }
 
-    private fun onSelectPreset(preset: CalculatorView.State.AspectRatioPreset) {
+    private fun onAspectRatioSelection(ratioPreset: CalculatorView.State.AspectRatioPreset) {
+        val areOriginalDimensionsFilledWithNumbers = ratioPreset.width.toBigDecimalOrNull() != null &&
+                ratioPreset.height.toBigDecimalOrNull() != null
 
+        _state.update {
+            it.copy(
+                originalWidth = ratioPreset.width,
+                originalHeight = ratioPreset.height,
+                ctaState = if (areOriginalDimensionsFilledWithNumbers) {
+                    CalculatorView.State.CtaState.Enabled
+                } else {
+                    CalculatorView.State.CtaState.Disabled
+                },
+                result = EMPTY_STRING
+            )
+        }
     }
 
     private fun onOriginalWidthChange(value: String) {
-        val areSectionAFieldsFilledWithNumbers = _state.value.originalHeight.toBigDecimalOrNull() != null &&
+        val areOriginalDimensionsFilledWithNumbers = _state.value.originalHeight.toBigDecimalOrNull() != null &&
                 value.toBigDecimalOrNull() != null
 
         _state.update {
             it.copy(
                 originalWidth = value,
-                selectedRatioPreset = CalculatorView.State.AspectRatioPreset.NONE,
-                ctaState = if (areSectionAFieldsFilledWithNumbers) {
+                ctaState = if (areOriginalDimensionsFilledWithNumbers) {
                     CalculatorView.State.CtaState.Enabled
                 } else {
                     CalculatorView.State.CtaState.Disabled
@@ -138,14 +151,13 @@ class CalculatorViewModel @Inject constructor(
     }
 
     private fun onOriginalHeightChange(value: String) {
-        val areSectionAFieldsFilledWithNumbers = _state.value.originalWidth.toBigDecimalOrNull() != null &&
+        val areOriginalDimensionsFilledWithNumbers = _state.value.originalWidth.toBigDecimalOrNull() != null &&
                 value.toBigDecimalOrNull() != null
 
         _state.update {
             it.copy(
                 originalHeight = value,
-                selectedRatioPreset = CalculatorView.State.AspectRatioPreset.NONE,
-                ctaState = if (areSectionAFieldsFilledWithNumbers) {
+                ctaState = if (areOriginalDimensionsFilledWithNumbers) {
                     CalculatorView.State.CtaState.Enabled
                 } else {
                     CalculatorView.State.CtaState.Disabled
@@ -159,7 +171,7 @@ class CalculatorViewModel @Inject constructor(
         _state.update {
             it.copy(
                 newWidth = value,
-                newHeight = "",
+                newHeight = EMPTY_STRING,
                 result = EMPTY_STRING
             )
         }
@@ -168,7 +180,7 @@ class CalculatorViewModel @Inject constructor(
     private fun onNewHeightChange(value: String) {
         _state.update {
             it.copy(
-                newWidth = "",
+                newWidth = EMPTY_STRING,
                 newHeight = value,
                 result = EMPTY_STRING
             )
@@ -182,7 +194,6 @@ class CalculatorViewModel @Inject constructor(
                 originalHeight = EMPTY_STRING,
                 newWidth = EMPTY_STRING,
                 newHeight = EMPTY_STRING,
-                selectedRatioPreset = CalculatorView.State.AspectRatioPreset.NONE,
                 result = EMPTY_STRING,
                 ctaState = CalculatorView.State.CtaState.Disabled
             )
