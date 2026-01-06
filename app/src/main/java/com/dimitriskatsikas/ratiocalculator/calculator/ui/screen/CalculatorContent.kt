@@ -167,6 +167,7 @@ private fun SourceSection(
     onAction: (UiAction) -> Unit
 ) {
     SectionHeader(text = stringResource(R.string.calculator_section_a_header))
+    // TODO check that presets are scrollable
     RatioPresets(
         state = state,
         onAction = onAction

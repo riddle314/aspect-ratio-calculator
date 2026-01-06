@@ -117,7 +117,7 @@ fun ResultCard(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                LeftSide(
+                InfoLeftSide(
                     result = result,
                     formattedResolution = formattedResolution,
                     originalWidth = originalWidth,
@@ -125,15 +125,8 @@ fun ResultCard(
                     modifier = Modifier.weight(1f)
                 )
                 Spacer(modifier = Modifier.width(16.dp))
-                Box(
-                    modifier = Modifier.size(80.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Rectangle(
-                        aspectRatio = result.aspectRatio.toFloatOrNull() ?: 1f,
-                        modifier = Modifier.matchParentSize()
-                    )
-                }
+                // TODO what will happen if I add modifier = Modifier.weight(1f) to the right side also?
+                ShapeRightSide(result)
             }
         }
     }
@@ -163,7 +156,7 @@ private fun HeaderRow(modifier: Modifier) {
 }
 
 @Composable
-private fun LeftSide(
+private fun InfoLeftSide(
     result: CalculatorView.State.Result,
     formattedResolution: String,
     originalWidth: String,
@@ -214,6 +207,19 @@ private fun LeftSide(
                 color = MaterialTheme.colorScheme.onPrimaryContainer
             )
         }
+    }
+}
+
+@Composable
+private fun ShapeRightSide(result: CalculatorView.State.Result) {
+    Box(
+        modifier = Modifier.size(80.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Rectangle(
+            aspectRatio = result.aspectRatio.toFloatOrNull() ?: 1f,
+            modifier = Modifier.matchParentSize()
+        )
     }
 }
 
