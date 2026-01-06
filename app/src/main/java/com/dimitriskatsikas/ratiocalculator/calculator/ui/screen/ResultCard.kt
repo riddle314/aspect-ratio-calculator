@@ -38,12 +38,11 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dimitriskatsikas.ratiocalculator.R
 import com.dimitriskatsikas.ratiocalculator.calculator.ui.CalculatorView
 import com.dimitriskatsikas.ratiocalculator.ui.theme.RatioCalcTheme
+import com.dimitriskatsikas.ratiocalculator.utils.ComponentPreviews
 
 @Composable
 fun ResultCard(
@@ -168,18 +167,7 @@ fun ResultCard(
     }
 }
 
-@Preview(
-    device = Devices.DEFAULT,
-    fontScale = 1f
-)
-@Preview(
-    device = Devices.PIXEL_2,
-    fontScale = 2f
-)
-@Preview(
-    device = Devices.NEXUS_7,
-    fontScale = 1f
-)
+@ComponentPreviews
 @Composable
 private fun ResultCardCase1Preview() {
     RatioCalcTheme {
@@ -195,18 +183,7 @@ private fun ResultCardCase1Preview() {
     }
 }
 
-@Preview(
-    device = Devices.DEFAULT,
-    fontScale = 1f
-)
-@Preview(
-    device = Devices.PIXEL_2,
-    fontScale = 2f
-)
-@Preview(
-    device = Devices.NEXUS_7,
-    fontScale = 1f
-)
+@ComponentPreviews
 @Composable
 private fun ResultCardCase2Preview() {
     RatioCalcTheme {
