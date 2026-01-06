@@ -78,23 +78,39 @@ class CalculatorViewModel @Inject constructor(
                     )
                 }
             }.onFailure { exception ->
+                _state.update {
+                    it.copy(
+                        result = EMPTY_STRING,
+                        ctaState = CalculatorView.State.CtaState.Enabled
+                    )
+                }
                 when (exception) {
-                    is ComputeAspectRatioUseCase.ZeroInputException -> handleZeroInputException()
-                    is ComputeAspectRatioUseCase.TargetValuesAllFilledException -> handleTargetValuesAllFilledException()
-                    else -> Unit
+                    is ComputeAspectRatioUseCase.ZeroInputException -> showZeroInputErrorToast()
+                    is ComputeAspectRatioUseCase.TargetValuesAllFilledException -> showTargetValuesAllFilledErrorToast()
+                    is ComputeAspectRatioUseCase.NoNumbersInputException -> showNoNumberInputErrorToast()
+                    else -> showUnknownErrorToast()
                 }
             }
         }
     }
 
-    private fun handleTargetValuesAllFilledException() {
-        _state.update {
-            it.copy(
-                newWidth = EMPTY_STRING,
-                newHeight = EMPTY_STRING,
-                result = EMPTY_STRING
+    private fun showUnknownErrorToast() {
+        _effect.trySend(
+            CalculatorView.Effect.ShowErrorToast(
+                CalculatorView.ErrorType.Unknown
             )
-        }
+        )
+    }
+
+    private fun showNoNumberInputErrorToast() {
+        _effect.trySend(
+            CalculatorView.Effect.ShowErrorToast(
+                CalculatorView.ErrorType.NoNumberInput
+            )
+        )
+    }
+
+    private fun showTargetValuesAllFilledErrorToast() {
         _effect.trySend(
             CalculatorView.Effect.ShowErrorToast(
                 CalculatorView.ErrorType.TargetValuesAllFilled
@@ -102,12 +118,7 @@ class CalculatorViewModel @Inject constructor(
         )
     }
 
-    private fun handleZeroInputException() {
-        _state.update {
-            it.copy(
-                result = EMPTY_STRING,
-            )
-        }
+    private fun showZeroInputErrorToast() {
         _effect.trySend(
             CalculatorView.Effect.ShowErrorToast(
                 CalculatorView.ErrorType.ZeroInput
@@ -168,21 +179,37 @@ class CalculatorViewModel @Inject constructor(
     }
 
     private fun onNewWidthChange(value: String) {
+        val isCtaEnabled = _state.value.originalWidth.toBigDecimalOrNull() != null &&
+                _state.value.originalHeight.toBigDecimalOrNull() != null &&
+                value.toBigDecimalOrNull() != null
         _state.update {
             it.copy(
                 newWidth = value,
                 newHeight = EMPTY_STRING,
-                result = EMPTY_STRING
+                result = EMPTY_STRING,
+                ctaState = if (isCtaEnabled) {
+                    CalculatorView.State.CtaState.Enabled
+                } else {
+                    CalculatorView.State.CtaState.Disabled
+                }
             )
         }
     }
 
     private fun onNewHeightChange(value: String) {
+        val isCtaEnabled = _state.value.originalWidth.toBigDecimalOrNull() != null &&
+                _state.value.originalHeight.toBigDecimalOrNull() != null &&
+                value.toBigDecimalOrNull() != null
         _state.update {
             it.copy(
                 newWidth = EMPTY_STRING,
                 newHeight = value,
-                result = EMPTY_STRING
+                result = EMPTY_STRING,
+                ctaState = if (isCtaEnabled) {
+                    CalculatorView.State.CtaState.Enabled
+                } else {
+                    CalculatorView.State.CtaState.Disabled
+                }
             )
         }
     }

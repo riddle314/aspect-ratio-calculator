@@ -50,5 +50,7 @@ object CalculatorView {
     sealed interface ErrorType {
         data object ZeroInput : ErrorType
         data object TargetValuesAllFilled : ErrorType
+        data object NoNumberInput : ErrorType
+        data object Unknown : ErrorType
     }
 }
