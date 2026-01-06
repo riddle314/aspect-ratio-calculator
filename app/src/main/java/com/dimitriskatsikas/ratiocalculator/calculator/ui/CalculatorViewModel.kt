@@ -2,7 +2,8 @@ package com.dimitriskatsikas.ratiocalculator.calculator.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dimitriskatsikas.ratiocalculator.calculator.domain.ComputeAspectRatioUseCase
+import com.dimitriskatsikas.ratiocalculator.calculator.domain.AspectRatioCalculator
+import com.dimitriskatsikas.ratiocalculator.calculator.domain.AspectRatioResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -20,7 +21,7 @@ private const val EMPTY_STRING = ""
 
 @HiltViewModel
 class CalculatorViewModel @Inject constructor(
-    private val computeAspectRatioUseCase: ComputeAspectRatioUseCase
+    private val aspectRatioCalculator: AspectRatioCalculator
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(CalculatorView.State())
@@ -62,7 +63,7 @@ class CalculatorViewModel @Inject constructor(
         viewModelScope.launch {
             val result = withContext(Dispatchers.Default) {
                 val currentState = _state.value
-                computeAspectRatioUseCase(
+                aspectRatioCalculator(
                     originalWidth = currentState.originalWidth,
                     originalHeight = currentState.originalHeight,
                     newWidth = currentState.newWidth,
@@ -73,7 +74,7 @@ class CalculatorViewModel @Inject constructor(
             result.onSuccess { value ->
                 _state.update {
                     it.copy(
-                        result = value,
+                        result = getResultText(value),
                         ctaState = CalculatorView.State.CtaState.Enabled
                     )
                 }
@@ -85,13 +86,18 @@ class CalculatorViewModel @Inject constructor(
                     )
                 }
                 when (exception) {
-                    is ComputeAspectRatioUseCase.ZeroInputException -> showZeroInputErrorToast()
-                    is ComputeAspectRatioUseCase.TargetValuesAllFilledException -> showTargetValuesAllFilledErrorToast()
-                    is ComputeAspectRatioUseCase.NoNumbersInputException -> showNoNumberInputErrorToast()
+                    is AspectRatioCalculator.ZeroInputException -> showZeroInputErrorToast()
+                    is AspectRatioCalculator.TargetValuesAllFilledException -> showTargetValuesAllFilledErrorToast()
+                    is AspectRatioCalculator.NoNumbersInputException -> showNoNumberInputErrorToast()
                     else -> showUnknownErrorToast()
                 }
             }
         }
+    }
+
+    private fun getResultText(result: AspectRatioResult): String {
+        //TODO convert it correctly to string
+        return result.toString()
     }
 
     private fun showUnknownErrorToast() {
