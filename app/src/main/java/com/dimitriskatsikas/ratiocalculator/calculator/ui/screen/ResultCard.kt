@@ -4,11 +4,12 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.os.Build
 import android.widget.Toast
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -31,11 +32,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -151,19 +154,50 @@ fun ResultCard(
                 }
                 Spacer(modifier = Modifier.width(4.dp))
                 Box(
-                    modifier = Modifier
-                        .size(80.dp),
+                    modifier = Modifier.size(80.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    // TODO image placeholder
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_graph),
-                        contentDescription = null,
-                        contentScale = ContentScale.FillWidth
-                    )
+                    Rectangle(result.aspectRatio.toFloat())
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun BoxScope.Rectangle(aspectRatio: Float) {
+    val shapeColor = MaterialTheme.colorScheme.onPrimaryContainer
+    Canvas(modifier = Modifier.matchParentSize()) {
+        val boxWidth = size.width
+        val boxHeight = size.height
+
+        // calculate the width and height of the box to draw
+        var drawWidth = boxWidth
+        var drawHeight = boxWidth / aspectRatio
+
+        if (drawHeight > boxHeight) {
+            drawHeight = boxHeight
+            drawWidth = boxHeight * aspectRatio
+        }
+
+        // calculate the offset to center the box
+        val offsetX = (boxWidth - drawWidth) / 2
+        val offsetY = (boxHeight - drawHeight) / 2
+
+        // draw the rectangle
+        drawRoundRect(
+            color = shapeColor.copy(alpha = 0.1f),
+            topLeft = Offset(offsetX, offsetY),
+            size = Size(drawWidth, drawHeight),
+            cornerRadius = CornerRadius(8.dp.toPx())
+        )
+        drawRoundRect(
+            style = Stroke(width = 2.dp.toPx()),
+            color = shapeColor,
+            topLeft = Offset(offsetX, offsetY),
+            size = Size(drawWidth, drawHeight),
+            cornerRadius = CornerRadius(8.dp.toPx())
+        )
     }
 }
 
