@@ -3,7 +3,6 @@ package com.dimitriskatsikas.ratiocalculator.calculator.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dimitriskatsikas.ratiocalculator.calculator.domain.AspectRatioCalculator
-import com.dimitriskatsikas.ratiocalculator.calculator.domain.AspectRatioResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -56,7 +55,7 @@ class CalculatorViewModel @Inject constructor(
     private fun calculate() {
         _state.update {
             it.copy(
-                result = EMPTY_STRING,
+                result = null,
                 ctaState = CalculatorView.State.CtaState.Loading
             )
         }
@@ -74,14 +73,18 @@ class CalculatorViewModel @Inject constructor(
             result.onSuccess { value ->
                 _state.update {
                     it.copy(
-                        result = getResultText(value),
+                        result = CalculatorView.State.Result(
+                            aspectRatio = value.aspectRatio,
+                            width = value.width,
+                            height = value.height
+                        ),
                         ctaState = CalculatorView.State.CtaState.Enabled
                     )
                 }
             }.onFailure { exception ->
                 _state.update {
                     it.copy(
-                        result = EMPTY_STRING,
+                        result = null,
                         ctaState = CalculatorView.State.CtaState.Enabled
                     )
                 }
@@ -93,11 +96,6 @@ class CalculatorViewModel @Inject constructor(
                 }
             }
         }
-    }
-
-    private fun getResultText(result: AspectRatioResult): String {
-        //TODO convert it correctly to string
-        return result.toString()
     }
 
     private fun showUnknownErrorToast() {
@@ -145,7 +143,7 @@ class CalculatorViewModel @Inject constructor(
                 } else {
                     CalculatorView.State.CtaState.Disabled
                 },
-                result = EMPTY_STRING
+                result = null
             )
         }
     }
@@ -162,7 +160,7 @@ class CalculatorViewModel @Inject constructor(
                 } else {
                     CalculatorView.State.CtaState.Disabled
                 },
-                result = EMPTY_STRING
+                result = null
             )
         }
     }
@@ -179,20 +177,21 @@ class CalculatorViewModel @Inject constructor(
                 } else {
                     CalculatorView.State.CtaState.Disabled
                 },
-                result = EMPTY_STRING
+                result = null
             )
         }
     }
 
     private fun onNewWidthChange(value: String) {
-        val isCtaEnabled = _state.value.originalWidth.toBigDecimalOrNull() != null &&
-                _state.value.originalHeight.toBigDecimalOrNull() != null &&
-                value.toBigDecimalOrNull() != null
+        val areOriginalDimensionsFilledWithNumbers = _state.value.originalWidth.toBigDecimalOrNull() != null &&
+                _state.value.originalHeight.toBigDecimalOrNull() != null
+        val isValueValid = value.isEmpty() || value.toBigDecimalOrNull() != null
+        val isCtaEnabled = areOriginalDimensionsFilledWithNumbers && isValueValid
         _state.update {
             it.copy(
                 newWidth = value,
                 newHeight = EMPTY_STRING,
-                result = EMPTY_STRING,
+                result = null,
                 ctaState = if (isCtaEnabled) {
                     CalculatorView.State.CtaState.Enabled
                 } else {
@@ -203,14 +202,15 @@ class CalculatorViewModel @Inject constructor(
     }
 
     private fun onNewHeightChange(value: String) {
-        val isCtaEnabled = _state.value.originalWidth.toBigDecimalOrNull() != null &&
-                _state.value.originalHeight.toBigDecimalOrNull() != null &&
-                value.toBigDecimalOrNull() != null
+        val areOriginalDimensionsFilledWithNumbers = _state.value.originalWidth.toBigDecimalOrNull() != null &&
+                _state.value.originalHeight.toBigDecimalOrNull() != null
+        val isValueValid = value.isEmpty() || value.toBigDecimalOrNull() != null
+        val isCtaEnabled = areOriginalDimensionsFilledWithNumbers && isValueValid
         _state.update {
             it.copy(
                 newWidth = EMPTY_STRING,
                 newHeight = value,
-                result = EMPTY_STRING,
+                result = null,
                 ctaState = if (isCtaEnabled) {
                     CalculatorView.State.CtaState.Enabled
                 } else {
@@ -227,7 +227,7 @@ class CalculatorViewModel @Inject constructor(
                 originalHeight = EMPTY_STRING,
                 newWidth = EMPTY_STRING,
                 newHeight = EMPTY_STRING,
-                result = EMPTY_STRING,
+                result = null,
                 ctaState = CalculatorView.State.CtaState.Disabled
             )
         }

@@ -10,7 +10,7 @@ object CalculatorView {
         val originalHeight: String = EMPTY_STRING,
         val newWidth: String = EMPTY_STRING,
         val newHeight: String = EMPTY_STRING,
-        val result: String = EMPTY_STRING,
+        val result: Result? = null,
         val ctaState: CtaState = CtaState.Disabled,
         val isExplainerDialogVisible: Boolean = false
     ) {
@@ -18,7 +18,7 @@ object CalculatorView {
         enum class AspectRatioPreset(val width: String, val height: String) {
             RATIO_1_1(width = "1", height = "1"),
             RATIO_4_3(width = "4", height = "3"),
-            RATIO_16_9(width = "19", height = "9"),
+            RATIO_16_9(width = "16", height = "9"),
             RATIO_21_9(width = "21", height = "9")
         }
 
@@ -27,6 +27,12 @@ object CalculatorView {
             data object Disabled : CtaState
             data object Loading : CtaState
         }
+
+        data class Result(
+            val aspectRatio: String,
+            val width: String,
+            val height: String
+        )
     }
 
     sealed interface UiAction {

@@ -12,7 +12,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             originalHeight = "",
             newWidth = "",
             newHeight = "",
-            result = "",
+            result = null,
             ctaState = CtaState.Disabled
         ),
         CalculatorView.State(
@@ -20,7 +20,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             originalHeight = "",
             newWidth = "",
             newHeight = "",
-            result = "",
+            result = null,
             ctaState = CtaState.Disabled,
             isExplainerDialogVisible = true
         ),
@@ -29,7 +29,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             originalHeight = "",
             newWidth = "",
             newHeight = "",
-            result = "",
+            result = null,
             ctaState = CtaState.Disabled
         ),
         CalculatorView.State(
@@ -37,7 +37,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             originalHeight = "1080",
             newWidth = "",
             newHeight = "",
-            result = "",
+            result = null,
             ctaState = CtaState.Disabled
         ),
         CalculatorView.State(
@@ -45,7 +45,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             originalHeight = "9",
             newWidth = "",
             newHeight = "",
-            result = "",
+            result = null,
             ctaState = CtaState.Enabled
         ),
         CalculatorView.State(
@@ -53,7 +53,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             originalHeight = "9",
             newWidth = "1920",
             newHeight = "",
-            result = "",
+            result = null,
             ctaState = CtaState.Enabled
         ),
         CalculatorView.State(
@@ -61,7 +61,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             originalHeight = "9",
             newWidth = "",
             newHeight = "",
-            result = "",
+            result = null,
             ctaState = CtaState.Loading
         ),
         CalculatorView.State(
@@ -69,7 +69,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             originalHeight = "9",
             newWidth = "1920",
             newHeight = "",
-            result = "",
+            result = null,
             ctaState = CtaState.Loading
         ),
         CalculatorView.State(
@@ -77,7 +77,11 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             originalHeight = "9",
             newWidth = "1920",
             newHeight = "",
-            result = "The outcome is 1080",
+            result = CalculatorView.State.Result(
+                aspectRatio = "1.77",
+                width = "1920",
+                height = "1080"
+            ),
             ctaState = CtaState.Enabled
         ),
         CalculatorView.State(
@@ -85,7 +89,11 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             originalHeight = "9",
             newWidth = "",
             newHeight = "1080",
-            result = "The outcome is 1920",
+            result = CalculatorView.State.Result(
+                aspectRatio = "1.77",
+                width = "1920",
+                height = "1080"
+            ),
             ctaState = CtaState.Enabled
         ),
         CalculatorView.State(
@@ -93,7 +101,11 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             originalHeight = "1080",
             newWidth = "",
             newHeight = "",
-            result = "The outcome is only aspect ratio",
+            result = CalculatorView.State.Result(
+                aspectRatio = "1.77",
+                width = "",
+                height = ""
+            ),
             ctaState = CtaState.Enabled
         )
     )

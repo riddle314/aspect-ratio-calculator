@@ -4,12 +4,12 @@
     <string name="calculator_info_icon_content_description">Info</string>
     <string name="info_back_icon_content_description">Back</string>
     <string name="calculator_clear_fields">Clear fields</string>
-    <string name="calculator_result_value">Result</string>
+    <string name="calculator_result_title">Result</string>
     <string name="calculator_tap_to_copy_label">Tap to copy</string>
     <string name="calculator_calculate">Calculate</string>
     <string name="info_screen_title">Info</string>
-    <string name="calculator_result_copied_toast_message">Result copied!</string>
-    <string name="calculator_copied_result_label">Copied Result</string>
+    <string name="calculator_result_copied_toast_message">Copied:</string>
+    <string name="calculator_copied_result_label">Resolution:</string>
     <string name="calculator_ad_banner_preview_text" translatable="false">Google Mobile Ads preview banner.</string>
     <string name="info_privacy_policy_title">Privacy Policy</string>
     <string name="info_privacy_policy_url" translatable="false">https://sites.google.com/view/interpolator-privacy-policy</string>
@@ -33,4 +33,6 @@
     <string name="calculator_error_target_values_all_filled">You should leave at least one number empty at new Dimensions section</string>
     <string name="calculator_error_no_numbers_input">Please provide number values for the respective inputs</string>
     <string name="calculator_error_unknown">Something went wrong</string>
+    <string name="calculator_result_content_aspect_ratio">Aspect ratio: %1$s = %2$s</string>
+    <string name="calculator_result_content_new_resolution">New resolution</string>
 </resources>
