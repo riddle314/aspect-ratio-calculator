@@ -9,7 +9,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -57,9 +56,19 @@ fun ResultCard(
     val clipboardManager = context.getSystemService(ClipboardManager::class.java)
     val interactionSource = remember { MutableInteractionSource() }
     val haptic = LocalHapticFeedback.current
-    val toastMessage = stringResource(id = R.string.calculator_result_copied_toast_message)
-    val resultLabel = stringResource(id = R.string.calculator_copied_result_label)
-    val formattedResolution = "${result.width} x ${result.height}"
+
+    val toastMessage = stringResource(id = R.string.calculator_copied_toast_message)
+    val resolutionCopyLabel = stringResource(id = R.string.calculator_resolution_copied_label)
+    val aspectRatioCopyLabel = stringResource(id = R.string.calculator_aspect_ratio_copied_label)
+
+    val formattedResolution = remember(result.width, result.height) {
+        if (result.width.isNotEmpty() && result.height.isNotEmpty()) {
+            "${result.width} x ${result.height}"
+        } else {
+            ""
+        }
+    }
+
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -70,14 +79,24 @@ fun ResultCard(
                 interactionSource = interactionSource,
                 indication = ripple(),
                 onClick = {
+                    val textToCopy: String
+                    val copyLabel: String
+                    if (formattedResolution.isNotEmpty()) {
+                        textToCopy = formattedResolution
+                        copyLabel = resolutionCopyLabel
+                    } else {
+                        textToCopy = result.aspectRatio
+                        copyLabel = aspectRatioCopyLabel
+                    }
+                    val toastText = "$textToCopy $toastMessage"
 
-                    val clip = ClipData.newPlainText(resultLabel, formattedResolution)
+                    val clip = ClipData.newPlainText(copyLabel, textToCopy)
                     clipboardManager?.setPrimaryClip(clip)
                     haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
                         Toast.makeText(
                             context,
-                            toastMessage,
+                            toastText,
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -91,73 +110,29 @@ fun ResultCard(
                 .padding(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            HeaderRow(modifier = Modifier.fillMaxWidth())
+            Spacer(modifier = Modifier.height(12.dp))
             Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Text(
-                    text = stringResource(R.string.calculator_result_title),
-                    style = MaterialTheme.typography.titleSmall,
-                    color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.6f)
-                )
-                Spacer(modifier = Modifier.width(4.dp))
-                Icon(
-                    imageVector = Icons.Outlined.ContentCopy,
-                    contentDescription = stringResource(R.string.calculator_tap_to_copy_label),
-                    modifier = Modifier.size(16.dp),
-                    tint = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.6f)
-                )
-            }
-            Spacer(modifier = Modifier.height(4.dp))
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    if (result.width.isNotEmpty() && result.height.isNotEmpty()) {
-                        Text(
-                            text = stringResource(R.string.calculator_result_content_new_resolution),
-                            style = MaterialTheme.typography.labelMedium,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.6f)
-                        )
-
-                        Text(
-                            text = formattedResolution,
-                            style = MaterialTheme.typography.headlineMedium,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
-
-                        Spacer(modifier = Modifier.height(4.dp))
-                    }
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(
-                            imageVector = Icons.Outlined.AspectRatio,
-                            contentDescription = null,
-                            modifier = Modifier.size(14.dp),
-                            tint = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.6f)
-                        )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(
-                            // formatted string showing the ratio source
-                            text = stringResource(
-                                R.string.calculator_result_content_aspect_ratio,
-                                "$originalWidth:$originalHeight",
-                                result.aspectRatio
-                            ),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.6f)
-                        )
-                    }
-                }
-                Spacer(modifier = Modifier.width(4.dp))
+                LeftSide(
+                    result = result,
+                    formattedResolution = formattedResolution,
+                    originalWidth = originalWidth,
+                    originalHeight = originalHeight,
+                    modifier = Modifier.weight(1f)
+                )
+                Spacer(modifier = Modifier.width(16.dp))
                 Box(
                     modifier = Modifier.size(80.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Rectangle(result.aspectRatio.toFloat())
+                    Rectangle(
+                        aspectRatio = result.aspectRatio.toFloatOrNull() ?: 1f,
+                        modifier = Modifier.matchParentSize()
+                    )
                 }
             }
         }
@@ -165,9 +140,90 @@ fun ResultCard(
 }
 
 @Composable
-private fun BoxScope.Rectangle(aspectRatio: Float) {
+private fun HeaderRow(modifier: Modifier) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Start,
+        modifier = modifier
+    ) {
+        Text(
+            text = stringResource(R.string.calculator_result_title),
+            style = MaterialTheme.typography.titleSmall,
+            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.6f),
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Icon(
+            imageVector = Icons.Outlined.ContentCopy,
+            contentDescription = stringResource(R.string.calculator_tap_to_copy_label),
+            modifier = Modifier.size(16.dp),
+            tint = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.6f)
+        )
+    }
+}
+
+@Composable
+private fun LeftSide(
+    result: CalculatorView.State.Result,
+    formattedResolution: String,
+    originalWidth: String,
+    originalHeight: String,
+    modifier: Modifier
+) {
+    Column(modifier = modifier) {
+        if (result.width.isNotEmpty() && result.height.isNotEmpty()) {
+            Text(
+                text = stringResource(R.string.calculator_result_content_new_resolution),
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.6f)
+            )
+
+            Text(
+                text = formattedResolution,
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onPrimaryContainer
+            )
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = Icons.Outlined.AspectRatio,
+                    contentDescription = null,
+                    modifier = Modifier.size(14.dp),
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.6f)
+                )
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(
+                    text = "$originalWidth:$originalHeight = ${result.aspectRatio}",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.6f)
+                )
+            }
+        } else {
+            Text(
+                text = stringResource(R.string.calculator_result_content_aspect_ratio),
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.6f)
+            )
+            Text(
+                text = result.aspectRatio,
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onPrimaryContainer
+            )
+        }
+    }
+}
+
+@Composable
+private fun Rectangle(
+    aspectRatio: Float,
+    modifier: Modifier
+) {
     val shapeColor = MaterialTheme.colorScheme.onPrimaryContainer
-    Canvas(modifier = Modifier.matchParentSize()) {
+    Canvas(modifier = modifier) {
         val boxWidth = size.width
         val boxHeight = size.height
 
@@ -207,7 +263,7 @@ private fun ResultCardCase1Preview() {
     RatioCalcTheme {
         ResultCard(
             result = CalculatorView.State.Result(
-                aspectRatio = "1.77",
+                aspectRatio = "1.78",
                 width = "1920",
                 height = "1080"
             ),
@@ -223,7 +279,7 @@ private fun ResultCardCase2Preview() {
     RatioCalcTheme {
         ResultCard(
             result = CalculatorView.State.Result(
-                aspectRatio = "1.77",
+                aspectRatio = "1.78",
                 width = "",
                 height = ""
             ),
