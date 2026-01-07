@@ -89,19 +89,19 @@ class AspectRatioCalculator @Inject constructor() {
         when (givenDimensionType) {
             is GivenDimensionType.Height -> {
                 // calculate new width
-                resultWidth = formatBigDecimal(givenDimensionType.height * aspectRatio)
-                resultHeight = formatBigDecimal(givenDimensionType.height)
+                resultWidth = formatAsWholeNumber(givenDimensionType.height * aspectRatio)
+                resultHeight = formatAsWholeNumber(givenDimensionType.height)
             }
 
             is GivenDimensionType.Width -> {
                 // calculate new height
-                resultHeight = formatBigDecimal(
+                resultHeight = formatAsWholeNumber(
                     givenDimensionType.width.divide(
                         aspectRatio,
                         MathContext.DECIMAL128
                     )
                 )
-                resultWidth = formatBigDecimal(givenDimensionType.width)
+                resultWidth = formatAsWholeNumber(givenDimensionType.width)
             }
 
             GivenDimensionType.None -> {
@@ -126,7 +126,7 @@ class AspectRatioCalculator @Inject constructor() {
     /**
      * This format ensures:
      * - Maximum 2 decimal places and rounding
-     * - Removes trailing zeros (e.g., 5.5000 -> 5.5)
+     * - Removes trailing zeros (e.g., 5.50 -> 5.5)
      * - Get a plain string representation without scientific notation (e.g., 1.2E7)
      *
      * @param value The value to format
@@ -135,6 +135,13 @@ class AspectRatioCalculator @Inject constructor() {
     private fun formatBigDecimal(value: BigDecimal): String = value
         .setScale(2, RoundingMode.HALF_UP)
         .stripTrailingZeros()
+        .toPlainString()
+
+    /**
+     * This format big decimal to integer number and returns it as a string
+     */
+    private fun formatAsWholeNumber(value: BigDecimal): String = value
+        .setScale(0, RoundingMode.HALF_UP)
         .toPlainString()
 
     class NoNumbersInputException() : Exception(
