@@ -125,7 +125,6 @@ fun ResultCard(
                     modifier = Modifier.weight(1f)
                 )
                 Spacer(modifier = Modifier.width(16.dp))
-                // TODO what will happen if I add modifier = Modifier.weight(1f) to the right side also?
                 ShapeRightSide(result)
             }
         }
