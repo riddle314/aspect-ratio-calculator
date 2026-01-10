@@ -40,7 +40,8 @@ fun ExplainerDialog(
     modifier: Modifier = Modifier, onDismissRequest: () -> Unit
 ) {
     BasicAlertDialog(
-        onDismissRequest = onDismissRequest, content = {
+        onDismissRequest = onDismissRequest,
+        content = {
             Card(
                 modifier = modifier
                     .fillMaxWidth()
@@ -61,13 +62,14 @@ fun ExplainerDialog(
                         text = stringResource(id = R.string.explainer_dialog_title),
                         style = MaterialTheme.typography.headlineSmall,
                         color = MaterialTheme.colorScheme.onSurface,
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
                     )
-                    Spacer(Modifier.height(24.dp))
+                    Spacer(Modifier.height(16.dp))
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(180.dp)
+                            .height(170.dp)
                             .clip(RoundedCornerShape(12.dp))
                             .background(
                                 MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
@@ -75,7 +77,7 @@ fun ExplainerDialog(
                         contentAlignment = Alignment.Center
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.ic_graph),
+                            painter = painterResource(id = R.drawable.ic_explainer_ratio),
                             contentDescription = stringResource(
                                 id = R.string.explainer_dialog_image_content_description
                             ),
@@ -83,12 +85,22 @@ fun ExplainerDialog(
                             modifier = Modifier.size(160.dp)
                         )
                     }
-                    Spacer(Modifier.height(24.dp))
+                    Spacer(Modifier.height(16.dp))
+                    Text(
+                        text = stringResource(id = R.string.explainer_dialog_subtitle),
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.primary,
+                        fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(Modifier.height(8.dp))
                     Text(
                         text = stringResource(id = R.string.explainer_dialog_body),
-                        style = MaterialTheme.typography.bodyMedium,
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            lineHeight = MaterialTheme.typography.bodyMedium.lineHeight * 1.2f
+                        ),
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Start
                     )
                     Spacer(Modifier.height(32.dp))
                     Button(

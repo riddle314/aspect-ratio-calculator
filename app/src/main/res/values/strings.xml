@@ -15,8 +15,9 @@
     <string name="info_privacy_policy_title">Privacy Policy</string>
     <string name="info_privacy_policy_url" translatable="false">https://sites.google.com/view/interpolator-privacy-policy</string>
     <string name="explainer_dialog_title">How It Works</string>
+    <string name="explainer_dialog_subtitle">Maintaining the Shape</string>
     <string name="explainer_dialog_image_content_description">Aspect Ratio Calculator diagram</string>
-    <string name="explainer_dialog_body">Explainer</string>
+    <string name="explainer_dialog_body">Aspect Ratio is the fixed relationship between width and height (like 16:9).\n\nTo resize an image without distortion (stretching or squashing), the new dimensions must follow this exact rule.\n\nThis calculator automatically finds the precise value to keep your image perfectly shaped.</string>
     <string name="explainer_dialog_dismiss_button">Got it</string>
     <string name="calculator_help_icon_content_description">How it works</string>
     <string name="info_app_icon_content_description">App Icon</string>
