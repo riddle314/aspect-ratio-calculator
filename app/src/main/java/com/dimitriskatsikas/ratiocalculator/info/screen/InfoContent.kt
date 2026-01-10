@@ -1,8 +1,8 @@
 package com.dimitriskatsikas.ratiocalculator.info.screen
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -34,7 +34,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -108,14 +107,22 @@ private fun Content(
 
 @Composable
 private fun AppBranding(state: InfoView.State) {
-    Image(
-        painter = painterResource(id = R.drawable.ic_launcher_foreground),
-        contentDescription = stringResource(R.string.info_app_icon_content_description),
+    Box(
         modifier = Modifier
             .size(100.dp)
             .clip(RoundedCornerShape(20.dp))
-            .background(colorResource(R.color.ic_launcher_background))
-    )
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_background),
+            contentDescription = null,
+            modifier = Modifier.matchParentSize()
+        )
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            contentDescription = stringResource(R.string.info_app_icon_content_description),
+            modifier = Modifier.matchParentSize()
+        )
+    }
     Spacer(modifier = Modifier.height(16.dp))
     Text(
         text = stringResource(R.string.full_app_name),
