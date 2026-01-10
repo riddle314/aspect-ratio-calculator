@@ -41,11 +41,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            manifestPlaceholders["ADMOB_APP_ID"] = "TO-DO" // TODO replace with your own admob app id for the live app
+            manifestPlaceholders["ADMOB_APP_ID"] = "***REMOVED***"
             buildConfigField(
                 type = "String",
                 name = "BANNER_AD_UNIT_ID",
-                value = "\"TO-DO\"" // TODO replace with admob banner ad unit id for the live app
+                value = "\"***REMOVED***\""
             )
         }
     }
