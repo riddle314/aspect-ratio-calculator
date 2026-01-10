@@ -25,24 +25,16 @@ class AspectRatioCalculator @Inject constructor() {
                 throw ZeroInputException()
             }
 
-            var result: AspectRatioResult
+            var givenDimensionType: GivenDimensionType
             if (newWidth.isEmpty()) {
                 if (newHeight.isEmpty()) {
-                    result = calculaterAspectRatio(
-                        originalWidthDecimal = originalWidthDecimal,
-                        originalHeightDecimal = originalHeightDecimal,
-                        givenDimensionType = GivenDimensionType.None
-                    )
+                    givenDimensionType = GivenDimensionType.None
                 } else {
                     val newHeightDecimal = newHeight.toBigDecimalOrThrow()
                     if (newHeightDecimal == BigDecimal.ZERO) {
                         throw ZeroInputException()
                     }
-                    result = calculaterAspectRatio(
-                        originalWidthDecimal = originalWidthDecimal,
-                        originalHeightDecimal = originalHeightDecimal,
-                        givenDimensionType = GivenDimensionType.Height(newHeightDecimal)
-                    )
+                    givenDimensionType = GivenDimensionType.Height(newHeightDecimal)
                 }
             } else {
                 if (newHeight.isNotEmpty()) {
@@ -52,15 +44,15 @@ class AspectRatioCalculator @Inject constructor() {
                     if (newWidthDecimal == BigDecimal.ZERO) {
                         throw ZeroInputException()
                     }
-                    result = calculaterAspectRatio(
-                        originalWidthDecimal = originalWidthDecimal,
-                        originalHeightDecimal = originalHeightDecimal,
-                        givenDimensionType = GivenDimensionType.Width(newWidthDecimal)
-                    )
+                    givenDimensionType = GivenDimensionType.Width(newWidthDecimal)
                 }
             }
 
-            result
+            calculaterAspectRatio(
+                originalWidthDecimal = originalWidthDecimal,
+                originalHeightDecimal = originalHeightDecimal,
+                givenDimensionType = givenDimensionType
+            )
         }.recoverCatching {
             when (it) {
                 is ZeroInputException -> throw it
