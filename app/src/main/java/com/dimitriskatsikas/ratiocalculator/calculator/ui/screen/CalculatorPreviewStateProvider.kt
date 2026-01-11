@@ -75,8 +75,8 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
         CalculatorView.State(
             originalWidth = "16",
             originalHeight = "9",
-            newWidth = "1920",
-            newHeight = "",
+            newWidth = "",
+            newHeight = "1080",
             result = CalculatorView.State.Result(
                 aspectRatio = "1.77",
                 width = "1920",
@@ -84,11 +84,12 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             ),
             ctaState = CtaState.Enabled
         ),
+        // previews for store screenshots
         CalculatorView.State(
             originalWidth = "16",
             originalHeight = "9",
-            newWidth = "",
-            newHeight = "1080",
+            newWidth = "1920",
+            newHeight = "",
             result = CalculatorView.State.Result(
                 aspectRatio = "1.77",
                 width = "1920",
@@ -107,6 +108,30 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
                 height = ""
             ),
             ctaState = CtaState.Enabled
-        )
+        ),
+        CalculatorView.State(
+            originalWidth = "4",
+            originalHeight = "3",
+            newWidth = "",
+            newHeight = "3000",
+            result = CalculatorView.State.Result(
+                aspectRatio = "1.33",
+                width = "4000",
+                height = "3000"
+            ),
+            ctaState = CtaState.Enabled
+        ),
+        CalculatorView.State(
+            originalWidth = "9",
+            originalHeight = "16",
+            newWidth = "1080",
+            newHeight = "",
+            result = CalculatorView.State.Result(
+                aspectRatio = "0.56",
+                width = "1080",
+                height = "1920"
+            ),
+            ctaState = CtaState.Enabled
+        ),
     )
 }
