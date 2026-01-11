@@ -13,7 +13,7 @@
     <string name="calculator_aspect_ratio_copied_label">Aspect ratio copied</string>
     <string name="calculator_ad_banner_preview_text" translatable="false">Google Mobile Ads preview banner.</string>
     <string name="info_privacy_policy_title">Privacy Policy</string>
-    <string name="info_privacy_policy_url" translatable="false">https://sites.google.com/view/interpolator-privacy-policy</string>
+    <string name="info_privacy_policy_url" translatable="false">https://sites.google.com/view/ratio-calc-privacy-policy</string>
     <string name="explainer_dialog_title">How It Works</string>
     <string name="explainer_dialog_subtitle">Maintaining the Shape</string>
     <string name="explainer_dialog_image_content_description">Aspect Ratio Calculator diagram</string>
