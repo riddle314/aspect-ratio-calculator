@@ -18,6 +18,7 @@ object CalculatorView {
         enum class AspectRatioPreset(val width: String, val height: String) {
             RATIO_1_1(width = "1", height = "1"),
             RATIO_4_3(width = "4", height = "3"),
+            RATIO_5_4(width = "5", height = "4"),
             RATIO_16_9(width = "16", height = "9"),
             RATIO_21_9(width = "21", height = "9")
         }
