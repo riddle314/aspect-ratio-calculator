@@ -152,7 +152,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
+        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
     }
 
     @Test
@@ -165,7 +165,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
+        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
     }
 
     @Test
@@ -178,7 +178,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
+        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
     }
 
     @Test
@@ -191,7 +191,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
+        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
     }
 
     @Test
@@ -204,7 +204,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.TargetValuesAllFilledException)
+        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.TargetValuesAllFilledException)
     }
 
     @Test
@@ -217,7 +217,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
+        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
     }
 
     @Test
@@ -230,7 +230,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
+        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
     }
 
     @Test
@@ -243,7 +243,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
+        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
     }
 
     @Test
@@ -256,7 +256,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
+        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
     }
 
     @Test
