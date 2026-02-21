@@ -55,7 +55,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.dimitriskatsikas.ratiocalculator.R
-import com.dimitriskatsikas.ratiocalculator.ui.calculator.CalculatorPreviewStateProvider
 import com.dimitriskatsikas.ratiocalculator.ui.calculator.CalculatorView
 import com.dimitriskatsikas.ratiocalculator.ui.calculator.CalculatorView.UiAction
 import com.dimitriskatsikas.ratiocalculator.ui.theme.RatioCalcTheme

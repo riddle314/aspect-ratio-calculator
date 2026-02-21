@@ -1,7 +1,7 @@
-package com.dimitriskatsikas.ratiocalculator.ui.calculator
+package com.dimitriskatsikas.ratiocalculator.ui.calculator.components
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import com.dimitriskatsikas.ratiocalculator.ui.calculator.CalculatorView.State.CtaState
+import com.dimitriskatsikas.ratiocalculator.ui.calculator.CalculatorView
 
 class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.State> {
 
@@ -12,7 +12,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             newWidth = "",
             newHeight = "",
             result = null,
-            ctaState = CtaState.Disabled
+            ctaState = CalculatorView.State.CtaState.Disabled
         ),
         CalculatorView.State(
             originalWidth = "",
@@ -20,7 +20,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             newWidth = "",
             newHeight = "",
             result = null,
-            ctaState = CtaState.Disabled,
+            ctaState = CalculatorView.State.CtaState.Disabled,
             isExplainerDialogVisible = true
         ),
         CalculatorView.State(
@@ -29,7 +29,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             newWidth = "",
             newHeight = "",
             result = null,
-            ctaState = CtaState.Disabled
+            ctaState = CalculatorView.State.CtaState.Disabled
         ),
         CalculatorView.State(
             originalWidth = "",
@@ -37,7 +37,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             newWidth = "",
             newHeight = "",
             result = null,
-            ctaState = CtaState.Disabled
+            ctaState = CalculatorView.State.CtaState.Disabled
         ),
         CalculatorView.State(
             originalWidth = "16",
@@ -45,7 +45,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             newWidth = "",
             newHeight = "",
             result = null,
-            ctaState = CtaState.Enabled
+            ctaState = CalculatorView.State.CtaState.Enabled
         ),
         CalculatorView.State(
             originalWidth = "16",
@@ -53,7 +53,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             newWidth = "1920",
             newHeight = "",
             result = null,
-            ctaState = CtaState.Enabled
+            ctaState = CalculatorView.State.CtaState.Enabled
         ),
         CalculatorView.State(
             originalWidth = "16",
@@ -61,7 +61,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             newWidth = "",
             newHeight = "",
             result = null,
-            ctaState = CtaState.Loading
+            ctaState = CalculatorView.State.CtaState.Loading
         ),
         CalculatorView.State(
             originalWidth = "16",
@@ -69,7 +69,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
             newWidth = "1920",
             newHeight = "",
             result = null,
-            ctaState = CtaState.Loading
+            ctaState = CalculatorView.State.CtaState.Loading
         ),
         CalculatorView.State(
             originalWidth = "16",
@@ -81,7 +81,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
                 width = "1920",
                 height = "1080"
             ),
-            ctaState = CtaState.Enabled
+            ctaState = CalculatorView.State.CtaState.Enabled
         ),
         // previews for store screenshots
         CalculatorView.State(
@@ -94,7 +94,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
                 width = "1920",
                 height = "1080"
             ),
-            ctaState = CtaState.Enabled
+            ctaState = CalculatorView.State.CtaState.Enabled
         ),
         CalculatorView.State(
             originalWidth = "1920",
@@ -106,7 +106,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
                 width = "",
                 height = ""
             ),
-            ctaState = CtaState.Enabled
+            ctaState = CalculatorView.State.CtaState.Enabled
         ),
         CalculatorView.State(
             originalWidth = "4",
@@ -118,7 +118,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
                 width = "4000",
                 height = "3000"
             ),
-            ctaState = CtaState.Enabled
+            ctaState = CalculatorView.State.CtaState.Enabled
         ),
         CalculatorView.State(
             originalWidth = "9",
@@ -130,7 +130,7 @@ class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.S
                 width = "1080",
                 height = "1920"
             ),
-            ctaState = CtaState.Enabled
+            ctaState = CalculatorView.State.CtaState.Enabled
         ),
     )
 }
