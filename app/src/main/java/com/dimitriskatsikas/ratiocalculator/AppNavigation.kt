@@ -6,8 +6,8 @@ import androidx.compose.runtime.remember
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
-import com.dimitriskatsikas.ratiocalculator.calculator.ui.screen.CalculatorScreen
-import com.dimitriskatsikas.ratiocalculator.info.screen.InfoScreen
+import com.dimitriskatsikas.ratiocalculator.ui.calculator.CalculatorScreen
+import com.dimitriskatsikas.ratiocalculator.ui.info.InfoScreen
 
 @Composable
 fun AppNavigation() {

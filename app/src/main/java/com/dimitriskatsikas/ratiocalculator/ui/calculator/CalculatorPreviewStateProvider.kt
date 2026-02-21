@@ -1,8 +1,7 @@
-package com.dimitriskatsikas.ratiocalculator.calculator.ui.screen
+package com.dimitriskatsikas.ratiocalculator.ui.calculator
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import com.dimitriskatsikas.ratiocalculator.calculator.ui.CalculatorView
-import com.dimitriskatsikas.ratiocalculator.calculator.ui.CalculatorView.State.CtaState
+import com.dimitriskatsikas.ratiocalculator.ui.calculator.CalculatorView.State.CtaState
 
 class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.State> {
 

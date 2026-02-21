@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.ratiocalculator.calculator.ui.screen
+package com.dimitriskatsikas.ratiocalculator.ui.calculator.components
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -42,7 +42,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.dimitriskatsikas.ratiocalculator.R
-import com.dimitriskatsikas.ratiocalculator.calculator.ui.CalculatorView
+import com.dimitriskatsikas.ratiocalculator.ui.calculator.CalculatorView
 import com.dimitriskatsikas.ratiocalculator.ui.theme.RatioCalcTheme
 import com.dimitriskatsikas.ratiocalculator.utils.ComponentPreviews
 

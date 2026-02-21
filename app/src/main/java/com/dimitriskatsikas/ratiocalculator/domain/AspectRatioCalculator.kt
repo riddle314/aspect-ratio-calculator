@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.ratiocalculator.calculator.domain
+package com.dimitriskatsikas.ratiocalculator.domain
 
 import java.math.BigDecimal
 import java.math.MathContext

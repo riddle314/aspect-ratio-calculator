@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.ratiocalculator.info.screen
+package com.dimitriskatsikas.ratiocalculator.ui.info
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -8,8 +8,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.UriHandler
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.dimitriskatsikas.ratiocalculator.Route
-import com.dimitriskatsikas.ratiocalculator.info.InfoView
-import com.dimitriskatsikas.ratiocalculator.info.InfoViewModel
+import com.dimitriskatsikas.ratiocalculator.ui.info.components.InfoContent
 
 @Composable
 fun InfoScreen(

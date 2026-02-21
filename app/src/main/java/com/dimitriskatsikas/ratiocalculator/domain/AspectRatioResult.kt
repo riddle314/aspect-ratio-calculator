@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.ratiocalculator.calculator.domain
+package com.dimitriskatsikas.ratiocalculator.domain
 
 data class AspectRatioResult(
     val aspectRatio: String,

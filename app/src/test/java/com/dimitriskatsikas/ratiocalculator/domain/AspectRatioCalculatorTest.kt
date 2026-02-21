@@ -1,6 +1,6 @@
-package com.dimitriskatsikas.ratiocalculator.calculator.domain
+package com.dimitriskatsikas.ratiocalculator.domain
 
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -25,9 +25,9 @@ class AspectRatioCalculatorTest {
 
         assertTrue(result.isSuccess)
         val value = result.getOrThrow()
-        assertEquals("1.33", value.aspectRatio)
-        assertEquals("", value.width)
-        assertEquals("", value.height)
+        Assertions.assertEquals("1.33", value.aspectRatio)
+        Assertions.assertEquals("", value.width)
+        Assertions.assertEquals("", value.height)
     }
 
     @Test
@@ -41,9 +41,9 @@ class AspectRatioCalculatorTest {
 
         assertTrue(result.isSuccess)
         val value = result.getOrThrow()
-        assertEquals("1.78", value.aspectRatio)
-        assertEquals("1920", value.width)
-        assertEquals("1080", value.height)
+        Assertions.assertEquals("1.78", value.aspectRatio)
+        Assertions.assertEquals("1920", value.width)
+        Assertions.assertEquals("1080", value.height)
     }
 
     @Test
@@ -57,9 +57,9 @@ class AspectRatioCalculatorTest {
 
         assertTrue(result.isSuccess)
         val value = result.getOrThrow()
-        assertEquals("1.33", value.aspectRatio)
-        assertEquals("800", value.width)
-        assertEquals("600", value.height)
+        Assertions.assertEquals("1.33", value.aspectRatio)
+        Assertions.assertEquals("800", value.width)
+        Assertions.assertEquals("600", value.height)
     }
 
     @Test
@@ -73,9 +73,9 @@ class AspectRatioCalculatorTest {
 
         assertTrue(result.isSuccess)
         val value = result.getOrThrow()
-        assertEquals("1.5", value.aspectRatio)
-        assertEquals("300", value.width)
-        assertEquals("200", value.height)
+        Assertions.assertEquals("1.5", value.aspectRatio)
+        Assertions.assertEquals("300", value.width)
+        Assertions.assertEquals("200", value.height)
     }
 
     @Test
@@ -89,9 +89,9 @@ class AspectRatioCalculatorTest {
 
         assertTrue(result.isSuccess)
         val value = result.getOrThrow()
-        assertEquals("1.78", value.aspectRatio)
-        assertEquals("1980", value.width)
-        assertEquals("1114", value.height)
+        Assertions.assertEquals("1.78", value.aspectRatio)
+        Assertions.assertEquals("1980", value.width)
+        Assertions.assertEquals("1114", value.height)
     }
 
     @Test
@@ -105,9 +105,9 @@ class AspectRatioCalculatorTest {
 
         assertTrue(result.isSuccess)
         val value = result.getOrThrow()
-        assertEquals("1.78", value.aspectRatio)
-        assertEquals("1980", value.width)
-        assertEquals("1114", value.height)
+        Assertions.assertEquals("1.78", value.aspectRatio)
+        Assertions.assertEquals("1980", value.width)
+        Assertions.assertEquals("1114", value.height)
     }
 
     @Test
@@ -121,9 +121,9 @@ class AspectRatioCalculatorTest {
 
         assertTrue(result.isSuccess)
         val value = result.getOrThrow()
-        assertEquals("1.78", value.aspectRatio)
-        assertEquals("1980", value.width)
-        assertEquals("1114", value.height)
+        Assertions.assertEquals("1.78", value.aspectRatio)
+        Assertions.assertEquals("1980", value.width)
+        Assertions.assertEquals("1114", value.height)
     }
 
     @Test
@@ -137,9 +137,9 @@ class AspectRatioCalculatorTest {
 
         assertTrue(result.isSuccess)
         val value = result.getOrThrow()
-        assertEquals("1.78", value.aspectRatio)
-        assertEquals("1980", value.width)
-        assertEquals("1114", value.height)
+        Assertions.assertEquals("1.78", value.aspectRatio)
+        Assertions.assertEquals("1980", value.width)
+        Assertions.assertEquals("1114", value.height)
     }
 
     @Test
@@ -152,7 +152,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
+        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
     }
 
     @Test
@@ -165,7 +165,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
+        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
     }
 
     @Test
@@ -178,7 +178,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
+        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
     }
 
     @Test
@@ -191,7 +191,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
+        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.ZeroInputException)
     }
 
     @Test
@@ -204,7 +204,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.TargetValuesAllFilledException)
+        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.TargetValuesAllFilledException)
     }
 
     @Test
@@ -217,7 +217,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
+        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
     }
 
     @Test
@@ -230,7 +230,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
+        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
     }
 
     @Test
@@ -243,7 +243,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
+        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
     }
 
     @Test
@@ -256,7 +256,7 @@ class AspectRatioCalculatorTest {
         )
 
         assertTrue(result.isFailure)
-        assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
+        Assertions.assertTrue(result.exceptionOrNull() is AspectRatioCalculator.NoNumbersInputException)
     }
 
     @Test
@@ -270,6 +270,6 @@ class AspectRatioCalculatorTest {
 
         assertTrue(result.isSuccess)
         val value = result.getOrThrow()
-        assertEquals("3.33", value.aspectRatio)
+        Assertions.assertEquals("3.33", value.aspectRatio)
     }
 }

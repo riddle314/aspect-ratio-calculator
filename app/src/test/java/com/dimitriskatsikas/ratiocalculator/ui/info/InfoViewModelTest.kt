@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.ratiocalculator.info
+package com.dimitriskatsikas.ratiocalculator.ui.info
 
 import app.cash.turbine.test
 import kotlinx.coroutines.test.runTest

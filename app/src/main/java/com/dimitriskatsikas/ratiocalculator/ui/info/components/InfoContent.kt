@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.ratiocalculator.info.screen
+package com.dimitriskatsikas.ratiocalculator.ui.info.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -40,7 +40,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.dimitriskatsikas.ratiocalculator.R
-import com.dimitriskatsikas.ratiocalculator.info.InfoView
+import com.dimitriskatsikas.ratiocalculator.ui.info.InfoView
 import com.dimitriskatsikas.ratiocalculator.ui.theme.RatioCalcTheme
 import com.dimitriskatsikas.ratiocalculator.utils.Previews
 

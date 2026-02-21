@@ -1,7 +1,7 @@
-package com.dimitriskatsikas.ratiocalculator.calculator.ui
+package com.dimitriskatsikas.ratiocalculator.ui.calculator
 
 import app.cash.turbine.test
-import com.dimitriskatsikas.ratiocalculator.calculator.domain.AspectRatioCalculator
+import com.dimitriskatsikas.ratiocalculator.domain.AspectRatioCalculator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -9,9 +9,9 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
-import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
@@ -86,7 +86,7 @@ class CalculatorViewModelTest {
 
             testClass.state.test {
                 val state = expectMostRecentItem()
-                assertEquals("1920", state.originalWidth)
+                Assertions.assertEquals("1920", state.originalWidth)
                 assertEquals(CalculatorView.State.CtaState.Disabled, state.ctaState)
             }
         }
@@ -98,7 +98,7 @@ class CalculatorViewModelTest {
 
             testClass.state.test {
                 val state = expectMostRecentItem()
-                assertEquals("1080", state.originalHeight)
+                Assertions.assertEquals("1080", state.originalHeight)
                 assertEquals(CalculatorView.State.CtaState.Disabled, state.ctaState)
             }
         }
@@ -110,14 +110,14 @@ class CalculatorViewModelTest {
 
             testClass.state.test {
                 val state = expectMostRecentItem()
-                assertEquals("1920", state.originalWidth)
+                Assertions.assertEquals("1920", state.originalWidth)
                 assertEquals(CalculatorView.State.CtaState.Disabled, state.ctaState)
             }
 
             testClass.onUiAction(CalculatorView.UiAction.OriginalHeightChange("1080"))
             testClass.state.test {
                 val state = expectMostRecentItem()
-                assertEquals("1080", state.originalHeight)
+                Assertions.assertEquals("1080", state.originalHeight)
                 assertEquals(CalculatorView.State.CtaState.Enabled, state.ctaState)
             }
         }
@@ -151,8 +151,8 @@ class CalculatorViewModelTest {
 
             testClass.state.test {
                 val state = expectMostRecentItem()
-                assertEquals("720", state.newHeight)
-                assertEquals("", state.newWidth)
+                Assertions.assertEquals("720", state.newHeight)
+                Assertions.assertEquals("", state.newWidth)
                 assertEquals(CalculatorView.State.CtaState.Disabled, state.ctaState)
             }
         }
@@ -164,8 +164,8 @@ class CalculatorViewModelTest {
 
             testClass.state.test {
                 val state = expectMostRecentItem()
-                assertEquals("", state.newHeight)
-                assertEquals("1280", state.newWidth)
+                Assertions.assertEquals("", state.newHeight)
+                Assertions.assertEquals("1280", state.newWidth)
                 assertEquals(CalculatorView.State.CtaState.Disabled, state.ctaState)
             }
         }
@@ -181,8 +181,8 @@ class CalculatorViewModelTest {
 
             testClass.state.test {
                 val state = expectMostRecentItem()
-                assertEquals("1280", state.newWidth)
-                assertEquals("", state.newHeight)
+                Assertions.assertEquals("1280", state.newWidth)
+                Assertions.assertEquals("", state.newHeight)
                 assertEquals(CalculatorView.State.CtaState.Enabled, state.ctaState)
             }
         }
@@ -198,8 +198,8 @@ class CalculatorViewModelTest {
 
             testClass.state.test {
                 val state = expectMostRecentItem()
-                assertEquals("", state.newWidth)
-                assertEquals("720", state.newHeight)
+                Assertions.assertEquals("", state.newWidth)
+                Assertions.assertEquals("720", state.newHeight)
                 assertEquals(CalculatorView.State.CtaState.Enabled, state.ctaState)
             }
         }
@@ -252,11 +252,11 @@ class CalculatorViewModelTest {
 
             testClass.state.test {
                 val state = expectMostRecentItem()
-                assertEquals("", state.originalWidth)
-                assertEquals("", state.originalHeight)
-                assertEquals("", state.newWidth)
-                assertEquals("", state.newHeight)
-                assertNull(state.result)
+                Assertions.assertEquals("", state.originalWidth)
+                Assertions.assertEquals("", state.originalHeight)
+                Assertions.assertEquals("", state.newWidth)
+                Assertions.assertEquals("", state.newHeight)
+                Assertions.assertNull(state.result)
                 assertEquals(CalculatorView.State.CtaState.Disabled, state.ctaState)
             }
         }
@@ -275,9 +275,9 @@ class CalculatorViewModelTest {
                 assertEquals(CalculatorView.State.CtaState.Loading, awaitItem().ctaState)
 
                 val successState = awaitItem()
-                assertEquals("1.33", successState.result?.aspectRatio)
-                assertEquals("800", successState.result?.width)
-                assertEquals("600", successState.result?.height)
+                Assertions.assertEquals("1.33", successState.result?.aspectRatio)
+                Assertions.assertEquals("800", successState.result?.width)
+                Assertions.assertEquals("600", successState.result?.height)
                 assertEquals(CalculatorView.State.CtaState.Enabled, successState.ctaState)
             }
         }

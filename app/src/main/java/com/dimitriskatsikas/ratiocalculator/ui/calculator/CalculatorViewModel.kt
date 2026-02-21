@@ -1,8 +1,8 @@
-package com.dimitriskatsikas.ratiocalculator.calculator.ui
+package com.dimitriskatsikas.ratiocalculator.ui.calculator
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dimitriskatsikas.ratiocalculator.calculator.domain.AspectRatioCalculator
+import com.dimitriskatsikas.ratiocalculator.domain.AspectRatioCalculator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel

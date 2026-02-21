@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.ratiocalculator.calculator.ui.screen
+package com.dimitriskatsikas.ratiocalculator.ui.calculator.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth

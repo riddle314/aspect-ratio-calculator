@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.ratiocalculator.calculator.ui
+package com.dimitriskatsikas.ratiocalculator.ui.calculator
 
 private const val EMPTY_STRING = ""
 

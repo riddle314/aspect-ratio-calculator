@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.ratiocalculator.info
+package com.dimitriskatsikas.ratiocalculator.ui.info
 
 import androidx.lifecycle.ViewModel
 import com.dimitriskatsikas.ratiocalculator.di.VersionName
