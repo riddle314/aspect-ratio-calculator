@@ -21,3 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "Ratio Calc"
 include(":app")
+include(":feature:calculator")
+include(":feature:info")
+include(":core:navigation")
+include(":core:designsystem")
