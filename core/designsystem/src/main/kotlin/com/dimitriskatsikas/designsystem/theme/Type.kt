@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.ratiocalculator.ui.theme
+package com.dimitriskatsikas.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

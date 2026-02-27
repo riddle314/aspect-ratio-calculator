@@ -41,8 +41,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.dimitriskatsikas.ratiocalculator.R
 import com.dimitriskatsikas.ratiocalculator.ui.info.InfoView
-import com.dimitriskatsikas.ratiocalculator.ui.theme.RatioCalcTheme
-import com.dimitriskatsikas.ratiocalculator.utils.Previews
+import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
+import com.dimitriskatsikas.designsystem.utils.Previews
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

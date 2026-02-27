@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.ratiocalculator.utils
+package com.dimitriskatsikas.designsystem.utils
 
 import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES

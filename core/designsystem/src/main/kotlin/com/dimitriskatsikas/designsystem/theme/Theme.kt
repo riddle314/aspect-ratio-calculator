@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.ratiocalculator.ui.theme
+package com.dimitriskatsikas.designsystem.theme
 
 import android.app.Activity
 import android.os.Build

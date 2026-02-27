@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.dimitriskatsikas.ratiocalculator.BuildConfig
 import com.dimitriskatsikas.ratiocalculator.R
-import com.dimitriskatsikas.ratiocalculator.ui.theme.RatioCalcTheme
+import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
