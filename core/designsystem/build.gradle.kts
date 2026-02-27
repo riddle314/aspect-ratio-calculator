@@ -42,6 +42,7 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation("javax.inject:javax.inject:1")
     debugImplementation(libs.androidx.compose.ui.tooling)
     
     testImplementation(libs.junit.jupiter)

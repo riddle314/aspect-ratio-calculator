@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Qualifier
+import com.dimitriskatsikas.designsystem.VersionName
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -15,7 +15,3 @@ object AppModule {
     @VersionName
     fun provideVersionName(): String = BuildConfig.VERSION_NAME
 }
-
-@Qualifier
-@Retention(AnnotationRetention.BINARY)
-annotation class VersionName
