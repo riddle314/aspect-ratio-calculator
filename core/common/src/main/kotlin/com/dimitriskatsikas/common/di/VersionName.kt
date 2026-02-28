@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.common
+package com.dimitriskatsikas.common.di
 
 import javax.inject.Qualifier
 

@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import com.dimitriskatsikas.common.VersionName
+import com.dimitriskatsikas.common.di.VersionName
 
 @Module
 @InstallIn(SingletonComponent::class)

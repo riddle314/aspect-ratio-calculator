@@ -31,7 +31,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.dimitriskatsikas.designsystem.R
 import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
-import com.dimitriskatsikas.common.ComponentPreviews
+import com.dimitriskatsikas.common.previews.ComponentPreviews
 
 
 @OptIn(ExperimentalMaterial3Api::class)
