@@ -31,13 +31,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.dimitriskatsikas.designsystem.R
 import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
-import com.dimitriskatsikas.designsystem.utils.ComponentPreviews
+import com.dimitriskatsikas.common.ComponentPreviews
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ExplainerDialog(
-    modifier: Modifier = Modifier, onDismissRequest: () -> Unit
+    modifier: Modifier = Modifier,
+    onDismissRequest: () -> Unit
 ) {
     BasicAlertDialog(
         onDismissRequest = onDismissRequest,

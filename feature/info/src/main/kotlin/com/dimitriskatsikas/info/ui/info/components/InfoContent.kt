@@ -42,7 +42,7 @@ import androidx.compose.ui.unit.dp
 import com.dimitriskatsikas.designsystem.R
 import com.dimitriskatsikas.info.ui.info.InfoView
 import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
-import com.dimitriskatsikas.designsystem.utils.Previews
+import com.dimitriskatsikas.common.Previews
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

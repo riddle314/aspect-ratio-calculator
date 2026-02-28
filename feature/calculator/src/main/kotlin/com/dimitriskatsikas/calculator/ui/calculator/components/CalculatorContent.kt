@@ -58,7 +58,7 @@ import com.dimitriskatsikas.designsystem.R
 import com.dimitriskatsikas.calculator.ui.calculator.CalculatorView
 import com.dimitriskatsikas.calculator.ui.calculator.CalculatorView.UiAction
 import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
-import com.dimitriskatsikas.designsystem.utils.Previews
+import com.dimitriskatsikas.common.Previews
 
 
 @OptIn(ExperimentalMaterial3Api::class)

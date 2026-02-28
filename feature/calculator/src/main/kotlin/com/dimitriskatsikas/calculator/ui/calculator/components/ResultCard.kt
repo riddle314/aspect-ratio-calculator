@@ -44,7 +44,7 @@ import androidx.compose.ui.unit.dp
 import com.dimitriskatsikas.designsystem.R
 import com.dimitriskatsikas.calculator.ui.calculator.CalculatorView
 import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
-import com.dimitriskatsikas.designsystem.utils.ComponentPreviews
+import com.dimitriskatsikas.common.ComponentPreviews
 
 @Composable
 fun ResultCard(

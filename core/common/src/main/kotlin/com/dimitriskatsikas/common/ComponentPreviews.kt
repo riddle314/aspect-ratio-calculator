@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.designsystem.utils
+package com.dimitriskatsikas.common
 
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview

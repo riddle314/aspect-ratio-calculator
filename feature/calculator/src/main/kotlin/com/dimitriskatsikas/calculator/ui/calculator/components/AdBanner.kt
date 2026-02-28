@@ -19,7 +19,10 @@ import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 
 @Composable
-fun AdBanner(modifier: Modifier, adUnitId: String) {
+fun AdBanner(
+    modifier: Modifier,
+    adUnitId: String
+) {
     Surface(
         tonalElevation = 2.dp,
         modifier = modifier

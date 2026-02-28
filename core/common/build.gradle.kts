@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.dimitriskatsikas.designsystem"
+    namespace = "com.dimitriskatsikas.common"
     compileSdk = 36
 
     defaultConfig {
@@ -38,12 +38,14 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    
+    // For @Preview
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3)
-    implementation(project(":core:common"))
     debugImplementation(libs.androidx.compose.ui.tooling)
+
+    // For @Qualifier
+    implementation(libs.javax.inject)
     
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.platform.launcher)

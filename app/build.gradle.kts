@@ -108,6 +108,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     implementation(project(":core:designsystem"))
     implementation(project(":core:navigation"))
+    implementation(project(":core:common"))
     implementation(project(":feature:calculator"))
     implementation(project(":feature:info"))
 }

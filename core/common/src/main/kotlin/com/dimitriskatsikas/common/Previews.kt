@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.designsystem.utils
+package com.dimitriskatsikas.common
 
 import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
