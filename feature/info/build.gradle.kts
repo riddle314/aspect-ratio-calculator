@@ -1,20 +1,14 @@
 plugins {
-    alias(libs.plugins.android.library)
+    id("com.dimitriskatsikas.android.library")
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt.gradle)
     alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "com.dimitriskatsikas.info"
-    compileSdk {
-        version = release(36)
-    }
+    namespace = "com.dimitriskatsikas.ratiocalculator.feature.info"
 
     defaultConfig {
-        minSdk = 26
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -24,17 +18,8 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
     buildFeatures {
         compose = true
-    }
-    testOptions {
-        unitTests.all {
-            it.useJUnitPlatform()
-        }
     }
 }
 

@@ -8,9 +8,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.dimitriskatsikas.designsystem.R
 import com.dimitriskatsikas.navigation.Route
 import com.dimitriskatsikas.calculator.ui.calculator.components.CalculatorContent
+import com.dimitriskatsikas.ratiocalculator.core.designsystem.R
 
 @Composable
 fun CalculatorScreen(

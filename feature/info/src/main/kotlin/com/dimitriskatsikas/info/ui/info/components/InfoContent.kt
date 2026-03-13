@@ -39,10 +39,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.dimitriskatsikas.designsystem.R
 import com.dimitriskatsikas.info.ui.info.InfoView
 import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
 import com.dimitriskatsikas.common.previews.Previews
+import com.dimitriskatsikas.ratiocalculator.core.designsystem.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
