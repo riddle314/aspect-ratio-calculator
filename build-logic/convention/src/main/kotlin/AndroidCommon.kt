@@ -17,13 +17,14 @@ private const val ANDROID_TEST_IMPLEMENTATION = "androidTestImplementation"
 internal val Project.libs
     get(): VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
-internal fun Project.getVersion(alias: String): Int {
+private fun Project.getVersion(alias: String): Int {
     return libs.findVersion(alias).get().requiredVersion.toInt()
 }
 
 // In AGP 9.0+, ApplicationExtension and LibraryExtension do not share a generic CommonExtension interface
-// that exposes `defaultConfig`, `compileOptions`, and `testOptions` cleanly. Because the DSL was decoupled to avoid generic hell, 
-// this minimal duplication is strictly required and is the recommended approach for Gradle convention plugins now.
+// that exposes `defaultConfig`, `compileOptions`, and `testOptions` cleanly.
+// Because the DSL was decoupled to avoid generic hell, this minimal duplication is strictly required
+// and is the recommended approach for Gradle convention plugins now.
 internal fun Project.configureAndroid(
     extension: ApplicationExtension,
 ) {
