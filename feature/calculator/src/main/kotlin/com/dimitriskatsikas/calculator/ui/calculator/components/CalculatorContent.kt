@@ -54,11 +54,11 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import com.dimitriskatsikas.designsystem.R
 import com.dimitriskatsikas.calculator.ui.calculator.CalculatorView
 import com.dimitriskatsikas.calculator.ui.calculator.CalculatorView.UiAction
-import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
 import com.dimitriskatsikas.common.previews.Previews
+import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
+import com.dimitriskatsikas.ratiocalculator.core.designsystem.R
 
 
 @OptIn(ExperimentalMaterial3Api::class)

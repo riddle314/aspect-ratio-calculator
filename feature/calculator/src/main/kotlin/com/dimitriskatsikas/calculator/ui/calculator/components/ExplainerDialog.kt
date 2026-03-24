@@ -29,9 +29,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.dimitriskatsikas.designsystem.R
-import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
 import com.dimitriskatsikas.common.previews.ComponentPreviews
+import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
+import com.dimitriskatsikas.ratiocalculator.core.designsystem.R
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -78,7 +78,9 @@ fun ExplainerDialog(
                         contentAlignment = Alignment.Center
                     ) {
                         Image(
-                            painter = painterResource(id = com.dimitriskatsikas.calculator.R.drawable.ic_explainer_ratio),
+                            painter = painterResource(
+                                id = com.dimitriskatsikas.ratiocalculator.feature.calculator.R.drawable.ic_explainer_ratio
+                            ),
                             contentDescription = stringResource(
                                 id = R.string.explainer_dialog_image_content_description
                             ),
