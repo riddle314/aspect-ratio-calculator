@@ -41,10 +41,10 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.dimitriskatsikas.designsystem.R
 import com.dimitriskatsikas.calculator.ui.calculator.CalculatorView
-import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
 import com.dimitriskatsikas.common.previews.ComponentPreviews
+import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
+import com.dimitriskatsikas.ratiocalculator.core.designsystem.R
 
 @Composable
 fun ResultCard(

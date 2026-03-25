@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic") // This allows the main project to use plugins defined in build-logic
     repositories {
         google {
             content {
