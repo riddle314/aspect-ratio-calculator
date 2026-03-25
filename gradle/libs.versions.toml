@@ -1,6 +1,6 @@
 [versions]
 android-compileSdk = "36"
-android-minSdk = "26"
+android-minSdk = "28"
 android-targetSdk = "36"
 agp = "9.0.1"
 javaxInject = "1"

@@ -5,6 +5,6 @@ plugins {
 android {
     configureAndroid(this)
     defaultConfig {
-        targetSdk = libs.findVersion("android-targetSdk").get().requiredVersion.toInt()
+        targetSdk = getVersion("android-targetSdk")
     }
 }

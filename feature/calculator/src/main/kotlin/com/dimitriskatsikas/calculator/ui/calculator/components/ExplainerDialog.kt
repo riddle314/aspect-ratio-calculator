@@ -31,7 +31,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.dimitriskatsikas.common.previews.ComponentPreviews
 import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
-import com.dimitriskatsikas.ratiocalculator.core.designsystem.R
+import com.dimitriskatsikas.ratiocalculator.core.designsystem.R as DesignR
+import com.dimitriskatsikas.ratiocalculator.feature.calculator.R
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -60,7 +61,7 @@ fun ExplainerDialog(
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Text(
-                        text = stringResource(id = R.string.explainer_dialog_title),
+                        text = stringResource(id = DesignR.string.explainer_dialog_title),
                         style = MaterialTheme.typography.headlineSmall,
                         color = MaterialTheme.colorScheme.onSurface,
                         textAlign = TextAlign.Center,
@@ -79,10 +80,10 @@ fun ExplainerDialog(
                     ) {
                         Image(
                             painter = painterResource(
-                                id = com.dimitriskatsikas.ratiocalculator.feature.calculator.R.drawable.ic_explainer_ratio
+                                id = R.drawable.ic_explainer_ratio
                             ),
                             contentDescription = stringResource(
-                                id = R.string.explainer_dialog_image_content_description
+                                id = DesignR.string.explainer_dialog_image_content_description
                             ),
                             contentScale = ContentScale.Fit,
                             modifier = Modifier.size(160.dp)
@@ -90,7 +91,7 @@ fun ExplainerDialog(
                     }
                     Spacer(Modifier.height(16.dp))
                     Text(
-                        text = stringResource(id = R.string.explainer_dialog_subtitle),
+                        text = stringResource(id = DesignR.string.explainer_dialog_subtitle),
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.primary,
                         fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
@@ -98,7 +99,7 @@ fun ExplainerDialog(
                     )
                     Spacer(Modifier.height(8.dp))
                     Text(
-                        text = stringResource(id = R.string.explainer_dialog_body),
+                        text = stringResource(id = DesignR.string.explainer_dialog_body),
                         style = MaterialTheme.typography.bodyMedium.copy(
                             lineHeight = MaterialTheme.typography.bodyMedium.lineHeight * 1.2f
                         ),
@@ -112,7 +113,7 @@ fun ExplainerDialog(
                         shape = RoundedCornerShape(50)
                     ) {
                         Text(
-                            text = stringResource(id = R.string.explainer_dialog_dismiss_button),
+                            text = stringResource(id = DesignR.string.explainer_dialog_dismiss_button),
                             style = MaterialTheme.typography.labelLarge
                         )
                     }
