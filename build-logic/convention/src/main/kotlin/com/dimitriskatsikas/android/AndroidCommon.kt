@@ -12,7 +12,7 @@ private const val ANDROID_COMPILE_SDK = "android-compileSdk"
 private const val ANDROID_MIN_SDK = "android-minSdk"
 private const val TEST_INSTRUMENTATION_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
 
-private val Project.libs
+val Project.libs
     get(): VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
 fun Project.libraryVersion(alias: String): Int {
