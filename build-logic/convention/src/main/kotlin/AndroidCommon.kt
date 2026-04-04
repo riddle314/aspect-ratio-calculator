@@ -1,3 +1,5 @@
+package com.dimitriskatsikas.android
+
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.JavaVersion
@@ -10,10 +12,10 @@ private const val ANDROID_COMPILE_SDK = "android-compileSdk"
 private const val ANDROID_MIN_SDK = "android-minSdk"
 private const val TEST_INSTRUMENTATION_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
 
-internal val Project.libs
+private val Project.libs
     get(): VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
-internal fun Project.getVersion(alias: String): Int {
+fun Project.libraryVersion(alias: String): Int {
     return libs.findVersion(alias).get().requiredVersion.toInt()
 }
 
@@ -21,14 +23,14 @@ internal fun Project.getVersion(alias: String): Int {
 // that exposes `defaultConfig`, `compileOptions`, and `testOptions` cleanly.
 // Because the DSL was decoupled to avoid generic hell, this minimal duplication is strictly required
 // and is the recommended approach for Gradle convention plugins now.
-internal fun Project.configureAndroid(
+fun Project.configureAndroid(
     extension: ApplicationExtension,
 ) {
     extension.apply {
-        compileSdk = getVersion(ANDROID_COMPILE_SDK)
+        compileSdk = libraryVersion(ANDROID_COMPILE_SDK)
 
         defaultConfig {
-            minSdk = getVersion(ANDROID_MIN_SDK)
+            minSdk = libraryVersion(ANDROID_MIN_SDK)
             testInstrumentationRunner = TEST_INSTRUMENTATION_RUNNER
         }
 
@@ -46,14 +48,14 @@ internal fun Project.configureAndroid(
     configureKotlin()
 }
 
-internal fun Project.configureAndroid(
+fun Project.configureAndroid(
     extension: LibraryExtension,
 ) {
     extension.apply {
-        compileSdk = getVersion(ANDROID_COMPILE_SDK)
+        compileSdk = libraryVersion(ANDROID_COMPILE_SDK)
 
         defaultConfig {
-            minSdk = getVersion(ANDROID_MIN_SDK)
+            minSdk = libraryVersion(ANDROID_MIN_SDK)
             testInstrumentationRunner = TEST_INSTRUMENTATION_RUNNER
         }
 
@@ -72,7 +74,6 @@ internal fun Project.configureAndroid(
 }
 
 private fun Project.configureKotlin() {
-
     // This block configures all Kotlin compilation tasks to target JVM 17.
     // We do this at the task level to guarantee uniformity across the project.
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).configureEach {
