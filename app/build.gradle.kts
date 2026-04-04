@@ -1,7 +1,7 @@
 import java.util.Properties
 
 plugins {
-    id("com.dimitriskatsikas.android.application")
+    id("com.dimitriskatsikas.android.android-app")
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.hilt.gradle)

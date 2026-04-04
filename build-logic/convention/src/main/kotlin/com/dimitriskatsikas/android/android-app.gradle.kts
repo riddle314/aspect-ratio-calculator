@@ -1,6 +1,6 @@
+package com.dimitriskatsikas.android
+
 import com.android.build.api.dsl.ApplicationExtension
-import com.dimitriskatsikas.android.configureAndroid
-import com.dimitriskatsikas.android.libraryVersion
 
 plugins {
     id("com.android.application")
