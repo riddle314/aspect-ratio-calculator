@@ -1,7 +1,7 @@
 plugins {
-    id("com.dimitriskatsikas.android.android-library")
+    id("com.dimitriskatsikas.plugins.android-library")
     alias(libs.plugins.kotlin.compose)
-    id("com.dimitriskatsikas.android.android-hilt")
+    id("com.dimitriskatsikas.plugins.android-hilt")
 }
 
 android {

@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.android
+package com.dimitriskatsikas.plugins
 
 import com.android.build.api.dsl.LibraryExtension
 

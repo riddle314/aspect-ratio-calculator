@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.android
+package com.dimitriskatsikas.plugins
 
 pluginManager.apply("com.google.devtools.ksp")
 pluginManager.apply("com.google.dagger.hilt.android")

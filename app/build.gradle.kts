@@ -1,10 +1,10 @@
 import java.util.Properties
 
 plugins {
-    id("com.dimitriskatsikas.android.android-app")
+    id("com.dimitriskatsikas.plugins.android-app")
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
-    id("com.dimitriskatsikas.android.android-hilt")
+    id("com.dimitriskatsikas.plugins.android-hilt")
 }
 
 android {

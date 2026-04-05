@@ -1,5 +1,5 @@
 plugins {
-    id("com.dimitriskatsikas.android.android-library")
+    id("com.dimitriskatsikas.plugins.android-library")
     alias(libs.plugins.kotlin.compose)
 }
 

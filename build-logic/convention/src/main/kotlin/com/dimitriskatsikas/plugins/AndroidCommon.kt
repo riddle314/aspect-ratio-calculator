@@ -1,4 +1,4 @@
-package com.dimitriskatsikas.android
+package com.dimitriskatsikas.plugins
 
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.LibraryExtension
@@ -7,6 +7,8 @@ import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.getByType
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 private const val ANDROID_COMPILE_SDK = "android-compileSdk"
 private const val ANDROID_MIN_SDK = "android-minSdk"
@@ -76,9 +78,9 @@ fun Project.configureAndroid(
 private fun Project.configureKotlin() {
     // This block configures all Kotlin compilation tasks to target JVM 17.
     // We do this at the task level to guarantee uniformity across the project.
-    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).configureEach {
+    tasks.withType(KotlinCompile::class.java).configureEach {
         compilerOptions {
-            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+            jvmTarget.set(JvmTarget.JVM_17)
         }
     }
 }
