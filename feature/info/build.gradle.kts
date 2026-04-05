@@ -1,8 +1,7 @@
 plugins {
     id("com.dimitriskatsikas.android.android-library")
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.hilt.gradle)
-    alias(libs.plugins.ksp)
+    id("com.dimitriskatsikas.android.android-hilt")
 }
 
 android {
@@ -37,9 +36,7 @@ dependencies {
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
 
-    implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
-    ksp(libs.hilt.compiler)
 
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.junit.jupiter)

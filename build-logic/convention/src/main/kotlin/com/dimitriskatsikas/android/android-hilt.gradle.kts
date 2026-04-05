@@ -1,9 +1,7 @@
 package com.dimitriskatsikas.android
 
-plugins {
-    id("com.google.devtools.ksp")
-    id("com.google.dagger.hilt.android")
-}
+pluginManager.apply("com.google.devtools.ksp")
+pluginManager.apply("com.google.dagger.hilt.android")
 
 dependencies {
     "implementation"(libs.findLibrary("hilt.android").get())
