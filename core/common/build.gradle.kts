@@ -1,6 +1,6 @@
 plugins {
     id("com.dimitriskatsikas.plugins.android-library")
-    alias(libs.plugins.kotlin.compose)
+    id("com.dimitriskatsikas.plugins.android-compose")
 }
 
 android {
@@ -16,24 +16,16 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    
-    // For @Preview
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    debugImplementation(libs.androidx.compose.ui.tooling)
 
     // For @Qualifier
     implementation(libs.javax.inject)
-    
+
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.platform.launcher)
     androidTestImplementation(libs.androidx.junit)
