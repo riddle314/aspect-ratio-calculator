@@ -2,9 +2,7 @@ package com.dimitriskatsikas.plugins
 
 import com.android.build.api.dsl.ApplicationExtension
 
-plugins {
-    id("com.android.application")
-}
+pluginManager.apply("com.android.application")
 
 extensions.configure<ApplicationExtension> {
     configureAndroid(this)

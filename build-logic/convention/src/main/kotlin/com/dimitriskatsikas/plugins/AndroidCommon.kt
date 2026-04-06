@@ -4,22 +4,12 @@ import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalog
-import org.gradle.api.artifacts.VersionCatalogsExtension
-import org.gradle.kotlin.dsl.getByType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 private const val ANDROID_COMPILE_SDK = "android-compileSdk"
 private const val ANDROID_MIN_SDK = "android-minSdk"
 private const val TEST_INSTRUMENTATION_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
-
-val Project.libs
-    get(): VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
-
-fun Project.libraryVersion(alias: String): Int {
-    return libs.findVersion(alias).get().requiredVersion.toInt()
-}
 
 // In AGP 9.0+, ApplicationExtension and LibraryExtension do not share a generic CommonExtension interface
 // that exposes `defaultConfig`, `compileOptions`, and `testOptions` cleanly.
