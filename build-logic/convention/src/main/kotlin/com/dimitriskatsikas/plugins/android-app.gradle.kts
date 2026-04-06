@@ -6,7 +6,4 @@ pluginManager.apply("com.android.application")
 
 extensions.configure<ApplicationExtension> {
     configureAndroid(this)
-    defaultConfig {
-        targetSdk = libraryVersion("android-targetSdk")
-    }
 }

@@ -9,6 +9,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 private const val ANDROID_COMPILE_SDK = "android-compileSdk"
 private const val ANDROID_MIN_SDK = "android-minSdk"
+private const val ANDROID_TARGET_SDK = "android-targetSdk"
 private const val TEST_INSTRUMENTATION_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
 
 // In AGP 9.0+, ApplicationExtension and LibraryExtension do not share a generic CommonExtension interface
@@ -24,6 +25,8 @@ fun Project.configureAndroid(
         defaultConfig {
             minSdk = libraryVersion(ANDROID_MIN_SDK)
             testInstrumentationRunner = TEST_INSTRUMENTATION_RUNNER
+            // this is application specific
+            targetSdk = libraryVersion(ANDROID_TARGET_SDK)
         }
 
         compileOptions {
