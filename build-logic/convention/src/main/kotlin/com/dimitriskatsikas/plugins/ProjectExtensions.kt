@@ -1,5 +1,6 @@
 package com.dimitriskatsikas.plugins
 
+import org.gradle.api.GradleException
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.artifacts.VersionCatalogsExtension
@@ -15,5 +16,15 @@ val Project.libs: VersionCatalog
  * Helper function to retrieve version integers from the "libs" version catalog using an alias.
  */
 fun Project.libraryVersion(alias: String): Int {
-    return libs.findVersion(alias).get().requiredVersion.toInt()
+    val version = libs.findVersion(alias).orElseThrow {
+        GradleException("Version alias '$alias' not found in the 'libs' version catalog.")
+    }
+    return try {
+        version.requiredVersion.toInt()
+    } catch (e: NumberFormatException) {
+        throw GradleException(
+            "Version for alias '$alias' is not a valid integer: ${version.requiredVersion}",
+            e
+        )
+    }
 }
