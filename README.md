@@ -7,8 +7,8 @@ An Android utility for calculating image and display dimensions.
 - **UI Framework:** Jetpack Compose for a fully declarative UI.
 - **Language:** Kotlin with Coroutines and Flows.
 - **Dependency Injection:** Hilt for robust, testable dependency management.
-- **Architecture:** MVVM (Model-View-ViewModel) following Google's recommended architecture patterns.
-- **Navigation:** Type-safe Navigation Compose for seamless multi-module routing.
+- **Architecture:** MVVM (Model-View-ViewModel)
+- **Navigation:** AndroidX Navigation 3 with type-safe route definitions for state-driven navigation.
 - **Build System:** Gradle (Kotlin DSL) with custom **Convention Plugins** for centralized build logic.
 
 ## 🏗 Project Structure
