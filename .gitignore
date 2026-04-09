@@ -48,3 +48,6 @@ google-services.json
 # Mac specific files
 .DS_Store
 
+# Ignore folders named ".kotlin" which are created at compile time
+.kotlin
+

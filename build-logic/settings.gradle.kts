@@ -10,7 +10,7 @@ pluginManagement {
     }
 }
 
-// This helps the plugins YOU write find the Android/Kotlin libraries they need to compile
+// This helps the plugins you write find the Android/Kotlin libraries they need to compile
 dependencyResolutionManagement {
     repositories {
         google()
