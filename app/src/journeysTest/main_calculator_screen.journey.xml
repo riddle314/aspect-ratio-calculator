@@ -7,10 +7,10 @@
 - All input fields are empty.</action>
         <action>Action 2: Validate First Ratio Preset
 - Tap the first ratio button.
--	Confirm the Width and Height fields of the original size section, are automatically populated with the ratio values shown on the ratio button we clicked.
--	Tap the Calculate button.
--	Confirm a visual shape is displayed that matches the selected ratio.
--	Verify that the calculated aspect ratio value is displayed as a number.</action>
+- Confirm the Width and Height fields of the original size section, are automatically populated with the ratio values shown on the ratio button we clicked.
+- Tap the Calculate button.
+- Confirm a visual shape is displayed that matches the selected ratio.
+- Verify that the calculated aspect ratio value is displayed as a number.</action>
         <action>Action 3: Custom Calculation with Second Ratio Preset
 - Tap the second ratio button.
 - Confirm the Width and Height fields of the original size section, are automatically populated with the ratio values shown on the ratio button we clicked.
