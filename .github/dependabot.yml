@@ -44,6 +44,7 @@ updates:
           - "androidx.test*"
           - "app.cash.turbine"
           - "org.jetbrains.kotlinx:kotlinx-coroutines-test"
+          - "com.android.tools.journeys*"
 
       # 3. Dependency Injection
       # Hilt and its Compose/Navigation integrations.
