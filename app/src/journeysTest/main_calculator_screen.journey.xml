@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<journey name="Main calculator screen Journey">
+    <description>Test main ratio calculator screen</description>
+    <actions xml:space="preserve">
+        <action>Test case 1: Clear Input Fields
+- Click 'Clear fields' button.
+- All input fields are empty.</action>
+        <action>Test case 2: Validate First Ratio Preset
+- Tap the first ratio button.
+- Confirm the Width and Height fields of the original size section, are automatically populated with the ratio values shown on the ratio button we clicked.
+- Tap the Calculate button.
+- Confirm a visual shape is displayed that matches the selected ratio.
+- Verify that the calculated aspect ratio value is displayed as a number.</action>
+        <action>Test case 3: Custom Calculation with Second Ratio Preset
+- Tap the second ratio button.
+- Confirm the Width and Height fields of the original size section, are automatically populated with the ratio values shown on the ratio button we clicked.
+- Enter 100 into the Width field under New Size
+- Tap the Calculate button
+- Confirm a visual shape is displayed that matches the selected ratio.
+- Verify the result section shows two rows of numbers:
+    1.    The calculated resolution (matching the input width and the corresponding calculated height).
+    2.    The numerical result of the aspect ratio division (e.g., 4 : 3 = 1.33).</action>
+        <action>Test case 4: Custom Calculation with Height selection
+- Enter 100 into the Height field under New Size
+- Confirm Width in New Size section is clear now
+- Tap the Calculate button
+- Confirm a visual shape is displayed that matches the selected ratio.
+- Verify the result section shows two rows of numbers:
+    1.    The calculated resolution (matching the input height and the corresponding calculated width).
+    2.    The numerical result of the aspect ratio division (e.g., 4 : 3 = 1.33).</action>
+        <action>Test case 5: Check auto clearance on selection
+- Enter 200 into the Width field under New Size
+- Confirm Height in New Size section is clear now</action>
+        <action>Test case 6: Confirm that the ad banner is visible
+- Confirm that the ad banner is visible at the bottom of the screen</action>
+        <action>Test case 7: Open help dialog
+- Press the lightbulb icon at the toolbar
+- Confirm you are seeing a dialog that explains some things about aspect ratio
+- Press the button
+- Confirm that you are back to main calculator screen</action>
+        </actions>
+</journey>

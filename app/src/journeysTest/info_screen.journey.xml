@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<journey name="Info Screen Journey">
+    <description xml:space="preserve">Test info screen</description>
+    <actions xml:space="preserve">
+        <action>Test case 1: Open Info screen
+- Press the info icon in the toolbar at the right
+- Confirm you are in the Info screen</action>
+    </actions>
+</journey>
