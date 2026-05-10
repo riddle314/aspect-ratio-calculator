@@ -33,6 +33,7 @@ The project follows a modular, feature-based architecture to promote scalability
 - **Unidirectional Data Flow (UDF):** Clean state management using `StateFlow` for UI state and `Channels` for one-time side effects (navigation, alerts).
 - **Convention Plugins:** Centralized build configuration using custom Gradle plugins in `build-logic`, ensuring consistency and reducing boilerplate.
 - **Unit Testing:** Comprehensive test coverage for domain logic and ViewModels to ensure reliability and facilitate safe refactoring.
+- **E2E Testing with AI:** Utilizes **Google Journeys** for natural language, AI-driven End-to-End testing, allowing robust UI validation without maintaining brittle automation code.
 
 ## 🤖 AI Agent Ready
 
