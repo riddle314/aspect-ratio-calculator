@@ -34,6 +34,7 @@ The project follows a modular, feature-based architecture to promote scalability
 - **Convention Plugins:** Centralized build configuration using custom Gradle plugins in `build-logic`, ensuring consistency and reducing boilerplate.
 - **Unit Testing:** Comprehensive test coverage for domain logic and ViewModels to ensure reliability and facilitate safe refactoring.
 - **E2E Testing with AI:** Utilizes **Google Journeys** for natural language, AI-driven End-to-End testing, allowing robust UI validation without maintaining brittle automation code.
+- **CI/CD & Automated Maintenance:** Configured with GitHub Actions for continuous integration, alongside Dependabot (with dependency grouping) to ensure libraries like Compose, Kotlin, and Hilt remain secure and up-to-date.
 
 ## 🤖 AI Agent Ready
 
