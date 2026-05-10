@@ -34,6 +34,15 @@ The project follows a modular, feature-based architecture to promote scalability
 - **Convention Plugins:** Centralized build configuration using custom Gradle plugins in `build-logic`, ensuring consistency and reducing boilerplate.
 - **Unit Testing:** Comprehensive test coverage for domain logic and ViewModels to ensure reliability and facilitate safe refactoring.
 
+## 🤖 AI Agent Ready
+
+This repository is explicitly optimized for AI-assisted development. It utilizes a "Single Source of Truth" architecture for LLM guidelines, ensuring that any AI coding assistant (Gemini, Claude, etc.) automatically adheres to strict project conventions without hallucinating architectures.
+
+- **Centralized Rules:** All architectural constraints, tech stack mandates, and security rules are maintained in `/.agents/GUIDELINES.md`.
+- **Tool-Agnostic Routing:** Contains native config files (e.g., `GEMINI.md` and `.claude/README.md`) that automatically point different AI assistants to the central guidelines.
+- **Custom Agent Skills:** Includes a `.agents/skills` directory providing operational scripts and context specifically tailored for LLM agents working within this codebase.
+    - **Note on `android-cli`:** This project includes the `android-cli` skill which grants AI agents advanced operational capabilities (such as deploying to emulators, executing tests, and deep layout inspection). For agents to fully utilize this skill, the host machine should have the `android` CLI tool installed.
+
 ## 🛠 Setup & AdMob Configuration
 
 This project uses AdMob for advertisements. For security reasons, production AdMob IDs are not stored in the repository.
