@@ -38,10 +38,7 @@ class CalculatorViewModel @Inject constructor(
         when (action) {
             is CalculatorView.UiAction.Calculate -> calculate()
             CalculatorView.UiAction.Clear -> clearState()
-            CalculatorView.UiAction.OpenInfoScreen -> {
-                sendEffect(CalculatorView.Effect.OpenInfoScreen)
-            }
-
+            CalculatorView.UiAction.OpenInfoScreen -> sendEffect(CalculatorView.Effect.OpenInfoScreen)
             CalculatorView.UiAction.DismissExplainerDialog -> setExplainerDialogVisibility(false)
             CalculatorView.UiAction.ShowExplainerDialog -> setExplainerDialogVisibility(true)
             is CalculatorView.UiAction.SelectAspectRatio -> onAspectRatioSelection(action.aspectRatioPreset)
