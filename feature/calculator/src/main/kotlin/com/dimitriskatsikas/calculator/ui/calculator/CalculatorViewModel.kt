@@ -31,17 +31,14 @@ class CalculatorViewModel @Inject constructor(
         initialValue = CalculatorView.State()
     )
 
-    private val _effect: Channel<CalculatorView.Effect> = Channel(Channel.BUFFERED)
+    private val _effect: Channel<CalculatorView.Effect> = Channel(Channel.CONFLATED)
     val effect: Flow<CalculatorView.Effect> = _effect.receiveAsFlow()
 
     fun onUiAction(action: CalculatorView.UiAction) {
         when (action) {
             is CalculatorView.UiAction.Calculate -> calculate()
             CalculatorView.UiAction.Clear -> clearState()
-            CalculatorView.UiAction.OpenInfoScreen -> {
-                _effect.trySend(CalculatorView.Effect.OpenInfoScreen)
-            }
-
+            CalculatorView.UiAction.OpenInfoScreen -> sendEffect(CalculatorView.Effect.OpenInfoScreen)
             CalculatorView.UiAction.DismissExplainerDialog -> setExplainerDialogVisibility(false)
             CalculatorView.UiAction.ShowExplainerDialog -> setExplainerDialogVisibility(true)
             is CalculatorView.UiAction.SelectAspectRatio -> onAspectRatioSelection(action.aspectRatioPreset)
@@ -99,7 +96,7 @@ class CalculatorViewModel @Inject constructor(
     }
 
     private fun showUnknownErrorToast() {
-        _effect.trySend(
+        sendEffect(
             CalculatorView.Effect.ShowErrorToast(
                 CalculatorView.ErrorType.Unknown
             )
@@ -107,7 +104,7 @@ class CalculatorViewModel @Inject constructor(
     }
 
     private fun showNoNumberInputErrorToast() {
-        _effect.trySend(
+        sendEffect(
             CalculatorView.Effect.ShowErrorToast(
                 CalculatorView.ErrorType.NoNumberInput
             )
@@ -115,7 +112,7 @@ class CalculatorViewModel @Inject constructor(
     }
 
     private fun showTargetValuesAllFilledErrorToast() {
-        _effect.trySend(
+        sendEffect(
             CalculatorView.Effect.ShowErrorToast(
                 CalculatorView.ErrorType.TargetValuesAllFilled
             )
@@ -123,7 +120,7 @@ class CalculatorViewModel @Inject constructor(
     }
 
     private fun showZeroInputErrorToast() {
-        _effect.trySend(
+        sendEffect(
             CalculatorView.Effect.ShowErrorToast(
                 CalculatorView.ErrorType.ZeroInput
             )
@@ -238,6 +235,12 @@ class CalculatorViewModel @Inject constructor(
             it.copy(
                 isExplainerDialogVisible = visible
             )
+        }
+    }
+
+    private fun sendEffect(effect: CalculatorView.Effect) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _effect.send(effect)
         }
     }
 }
