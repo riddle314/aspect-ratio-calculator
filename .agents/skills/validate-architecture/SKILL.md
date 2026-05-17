@@ -17,7 +17,7 @@ metadata:
 This skill provides instructions for AI agents on how to validate the architecture of code within the Aspect Ratio Calculator project. Use this skill when asked to review code, validate a new feature, or check architecture compliance.
 
 ## Pre-requisites
-Before validating, ensure you have read `.agents/AGENTS.md` to understand the project's core architecture rules.
+Before validating, ensure you have read `AGENTS.md` to understand the project's core architecture rules.
 
 ## Validation Checklist
 
