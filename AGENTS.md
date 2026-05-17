@@ -22,7 +22,7 @@ This document serves as the primary source of truth for all AI agents and LLMs w
 
 ## 🎨 UI & Design System
 - Always use components and theme tokens from `:core:designsystem`.
-- Do not hardcode colors or dimensions; use `AppTheme.colors` and `AppTheme.spacing`.
+- Do not hardcode colors; use `AppTheme.colors`.
 
 ## 🧪 Testing Standards
 - **Unit Tests:** Mandatory for all ViewModels and Domain logic.
