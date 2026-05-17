@@ -1,6 +1,12 @@
-# Aspect Ratio Calculator
+<div align="center">
+  <img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" alt="Aspect Ratio Calculator Icon" width="150"/>
+  <h1>Aspect Ratio Calculator</h1>
+  <p>An Android utility for calculating image and display dimensions.</p>
 
-An Android utility for calculating image and display dimensions.
+  <a href="https://play.google.com/store/apps/details?id=com.dimitriskatsikas.ratiocalculator">
+    <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="60"/>
+  </a>
+</div>
 
 ## 🛠 Technical Stack
 
