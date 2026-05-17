@@ -51,3 +51,5 @@ google-services.json
 # Ignore folders named ".kotlin" which are created at compile time
 .kotlin
 
+# Local markdown files
+*.local.md
