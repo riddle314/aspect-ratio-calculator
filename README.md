@@ -44,10 +44,10 @@ The project follows a modular, feature-based architecture to promote scalability
 
 ## 🤖 AI Agent Ready
 
-This repository is explicitly optimized for AI-assisted development. It utilizes a "Single Source of Truth" architecture for LLM guidelines, ensuring that any AI coding assistant (Gemini, Claude, etc.) automatically adheres to strict project conventions without hallucinating architectures.
+This repository is explicitly optimized for AI-assisted development. It utilizes a "Single Source of Truth" architecture for LLM guidelines, ensuring that AI coding assistants — including **Gemini CLI**, **Claude Code**, and **Google Antigravity** — automatically adhere to strict project conventions without hallucinating architectures.
 
-- **Centralized Rules:** All architectural constraints, tech stack mandates, and security rules are maintained in `/.agents/GUIDELINES.md`.
-- **Tool-Agnostic Routing:** Contains native config files (e.g., `GEMINI.md` and `.claude/README.md`) that automatically point different AI assistants to the central guidelines.
+- **Centralized Rules:** All architectural constraints, tech stack mandates, and security rules are maintained in `AGENTS.md`.
+- **Tool-Agnostic Routing:** Contains native config files (`GEMINI.md` for Gemini CLI, `CLAUDE.md` for Claude Code) that automatically point the respective AI assistants to the central guidelines.
 - **Custom Agent Skills:** Includes a `.agents/skills` directory providing operational scripts and context specifically tailored for LLM agents working within this codebase.
     - **Note on `android-cli`:** This project includes the `android-cli` skill which grants AI agents advanced operational capabilities (such as deploying to emulators, executing tests, and deep layout inspection). For agents to fully utilize this skill, the host machine should have the `android` CLI tool installed.
 
