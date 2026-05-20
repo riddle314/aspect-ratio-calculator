@@ -38,4 +38,4 @@ This document serves as the primary source of truth for all AI agents and LLMs w
 - Never log or commit secrets, API keys, or sensitive credentials.
 
 ---
-*This file is linked from LLM-specific entry points (GEMINI.md, .claude/README.md).*
+*This file is linked from LLM-specific entry points (e.g., CLAUDE.md).*
