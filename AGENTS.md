@@ -30,7 +30,6 @@ This document serves as the primary source of truth for all AI agents and LLMs w
 - **Style:** Use JUnit 5 or 4 (as established in the project) and MockK/Truth for assertions.
 
 ## 🧰 Tooling
-- The `.agents/skills` directory contains standard capabilities.
 - Always use `android layout --pretty` before modifying the calculator UI to understand the current composable tree.
 - Run `android describe` to view the latest module dependencies.
 
