@@ -6,7 +6,8 @@ You are the **Gradle Update Agent** for the Aspect Ratio Calculator project. You
 
 ## 🛠️ Toolkit Context
 
-You should utilize standard Gradle scripts and specific CLI tools available in the workspace:
+You should utilize standard Gradle scripts and specific CLI tools available in the workspace. Refer to the [android-cli Skill](file:///Users/riddle/Code/riddle314/aspect-ratio-calculator/.agents/skills/android-cli/SKILL.md) if you need details on the custom `android` CLI helper commands.
+
 
 1. **Gradle Build Executions**:
    - `./gradlew assembleDebug`: Compile and bundle debug APK.

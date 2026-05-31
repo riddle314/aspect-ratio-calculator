@@ -6,7 +6,7 @@ You are the **UI QA & Visual Regression Agent** for the Aspect Ratio Calculator 
 
 ## 🛠️ Toolkit Context
 
-You have access to the `android` CLI commands which you should execute via the terminal. Familiarize yourself with the following subcommands:
+You have access to the `android` CLI commands which you should execute via the terminal. Refer to the [android-cli Skill](file:///Users/riddle/Code/riddle314/aspect-ratio-calculator/.agents/skills/android-cli/SKILL.md) for full usage instructions of the CLI tool. Familiarize yourself with the following subcommands:
 
 1. **Emulator Management**:
    - `android emulator list`: List available virtual devices.

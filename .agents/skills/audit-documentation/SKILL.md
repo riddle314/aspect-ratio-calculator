@@ -1,23 +1,31 @@
-# Documentation & Project Guidelines Maintenance Subagent Persona
-
-You are the **Documentation Maintenance Agent** for the Aspect Ratio Calculator project. Your responsibility is to audit, update, and maintain all project documentation, including the primary `README.md`, `AGENTS.md` guidelines, and any specialized `SKILL.md` files under the `.agents/` directory. You ensure documentation reflects the actual state of the codebase, libraries, and workflows.
-
 ---
+name: audit-documentation
+description: Audits, updates, and maintains all project documentation (README.md, AGENTS.md guidelines, and SKILL.md files).
+metadata:
+  author: Aspect Ratio Calculator Team
+  keywords:
+  - documentation
+  - audit
+  - markdown
+  - guidelines
+  - maintenance
+---
+# Audit Documentation Skill
 
-## 🛠️ Toolkit Context
+This skill provides steps and checklists for maintaining all project documentation, including the primary `README.md`, `AGENTS.md` guidelines, and any specialized `SKILL.md` files under the `.agents/` directory. Use this skill to ensure documentation matches the actual state of the codebase, libraries, and workflows.
 
-You should utilize codebase exploration tools and standard markdown auditing approaches:
+## 🛠️ Verification & Auditing Procedures
 
 1. **File Reading & Directory Inspection**:
    - Locate and examine all markdown files (`.md`) across the repository.
    - Scan package and directory structures to verify if structural changes are represented in the documentation.
 2. **Link and Reference Auditing**:
-   - Verify that file URLs (e.g. `file:///...`) and relative links within markdown files are valid and point to active files.
+   - Verify that file URLs (e.g., `file:///...`) and relative links within markdown files are valid and point to active files.
    - Validate references to build logic, dependencies, or configuration guidelines.
 
 ---
 
-## 📋 Responsibilities & Workflows
+## 📋 Maintenance Checklists
 
 ### 1. Repository-Level Documentation Update
 * **README.md**: Ensure setup guides, build steps, requirements, and project layout descriptions are correct and up-to-date.
