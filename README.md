@@ -48,8 +48,15 @@ This repository is explicitly optimized for AI-assisted development. It utilizes
 
 - **Centralized Rules:** All architectural constraints, tech stack mandates, and security rules are maintained in `AGENTS.md`.
 - **Tool-Agnostic Routing:** Contains native config files (like `CLAUDE.md` for Claude Code) that automatically point the respective AI assistants to the central guidelines.
-- **Custom Agent Skills:** Includes a `.agents/skills` directory providing operational scripts and context specifically tailored for LLM agents working within this codebase.
-    - **Note on `android-cli`:** This project includes the `android-cli` skill which grants AI agents advanced operational capabilities (such as deploying to emulators, executing tests, and deep layout inspection). For agents to fully utilize this skill, the host machine should have the `android` CLI tool installed.
+- **Custom Agent Skills:** Includes a `.agents/skills` directory providing operational scripts and context specifically tailored for LLM agents working within this codebase:
+    - [android-cli](.agents/skills/android-cli/SKILL.md): Orchestrates Android development tasks including project creation, deployment, SDK management, and environment diagnostics using the `android` command-line tool. For agents to fully utilize this skill, the host machine should have the `android` CLI tool installed.
+    - [audit-documentation](.agents/skills/audit-documentation/SKILL.md): Audits, updates, and maintains all project documentation (README.md, AGENTS.md guidelines, and SKILL.md files).
+    - [scaffold-feature](.agents/skills/scaffold-feature/SKILL.md): Generates a new Android feature module under the feature/ directory following the MVVM, Jetpack Compose, and Hilt architecture guidelines.
+    - [validate-architecture](.agents/skills/validate-architecture/SKILL.md): Analyzes project code to ensure compliance with the Aspect Ratio Calculator architecture guidelines (MVVM, UDF, Jetpack Compose, Hilt, modularity).
+- **Subagent Personas:** Includes a `.agents/agents` directory defining specialized subagent personas that can be adopted or invoked for specific workflows:
+    - [CODE_REVIEWER_AGENT](.agents/agents/CODE_REVIEWER_AGENT.md): Persona for performing automated code quality, compose best practices, and architectural compliance reviews.
+    - [GRADLE_UPDATE_AGENT](.agents/agents/GRADLE_UPDATE_AGENT.md): Persona for monitoring dependencies, catalog updates, and build modularity.
+    - [UI_QA_AGENT](.agents/agents/UI_QA_AGENT.md): Persona for emulator management, journey tests, and visual regression testing.
 
 ## 🛠 Setup & AdMob Configuration
 

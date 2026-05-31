@@ -33,6 +33,20 @@ This document serves as the primary source of truth for all AI agents and LLMs w
 - Always use `android layout --pretty` before modifying the calculator UI to understand the current composable tree.
 - Run `android describe` to view the latest module dependencies.
 
+## 🤖 Agent Personas & Skills
+This project leverages custom subagent personas and skills specifically structured to assist AI agents in specialized tasks.
+
+### 👥 Subagent Personas (located in `.agents/agents/`)
+- **[Code Reviewer](.agents/agents/CODE_REVIEWER_AGENT.md):** Reviews code changes for correctness, styling rules, Compose best practices, and architectural compliance.
+- **[Gradle Update Agent](.agents/agents/GRADLE_UPDATE_AGENT.md):** Monitors dependency updates, maintains version catalogs, and keeps build scripts modular.
+- **[UI QA Agent](.agents/agents/UI_QA_AGENT.md):** Launches emulators, runs visual regression tests, and executes natural language user journey tests.
+
+### 🛠️ Custom Skills (located in `.agents/skills/`)
+- **[android-cli](.agents/skills/android-cli/SKILL.md):** Orchestrates SDK installation, emulator boot/management, screenshot captures, and layout nesting analysis.
+- **[audit-documentation](.agents/skills/audit-documentation/SKILL.md):** Main guide to check layout changes, verify file URLs, and maintain system documentation.
+- **[scaffold-feature](.agents/skills/scaffold-feature/SKILL.md):** Templates and structure to quickly generate new MVVM feature modules.
+- **[validate-architecture](.agents/skills/validate-architecture/SKILL.md):** Diagnostic checks verifying Hilt DI, compose themes, state flows, and navigation compliance.
+
 ## 🔒 Security
 - Never log or commit secrets, API keys, or sensitive credentials.
 

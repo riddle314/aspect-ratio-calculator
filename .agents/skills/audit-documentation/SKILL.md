@@ -20,7 +20,7 @@ This skill provides steps and checklists for maintaining all project documentati
    - Locate and examine all markdown files (`.md`) across the repository.
    - Scan package and directory structures to verify if structural changes are represented in the documentation.
 2. **Link and Reference Auditing**:
-   - Verify that file URLs (e.g., `file:///...`) and relative links within markdown files are valid and point to active files.
+   - Verify that all links within repository markdown files use relative paths. **Do not use absolute file paths (e.g., `file:///...`) in committed files**, as they break on other machines and remote hosts. Absolute `file:///` URLs are only permitted in chat responses and temporary artifacts.
    - Validate references to build logic, dependencies, or configuration guidelines.
 
 ---
