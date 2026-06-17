@@ -1,6 +1,6 @@
 package com.dimitriskatsikas.calculator.domain
 
-data class AspectRatioResult(
+internal data class AspectRatioResult(
     val aspectRatio: String,
     val width: String,
     val height: String

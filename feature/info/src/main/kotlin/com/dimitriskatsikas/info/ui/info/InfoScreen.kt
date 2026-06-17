@@ -6,15 +6,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.UriHandler
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.dimitriskatsikas.navigation.Route
 import com.dimitriskatsikas.info.ui.info.components.InfoContent
 
 @Composable
 fun InfoScreen(
-    viewModel: InfoViewModel,
     backStack: SnapshotStateList<Route>,
 ) {
+    val viewModel: InfoViewModel = hiltViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
     val uriHandler = LocalUriHandler.current
 
@@ -24,7 +25,6 @@ fun InfoScreen(
     )
 
     LaunchedEffect(Unit) {
-
         viewModel.effect.collect { effect ->
             handleEffect(
                 effect = effect,

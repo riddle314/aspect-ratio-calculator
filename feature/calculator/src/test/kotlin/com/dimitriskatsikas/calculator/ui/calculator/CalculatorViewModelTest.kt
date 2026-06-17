@@ -20,7 +20,7 @@ import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @OptIn(ExperimentalCoroutinesApi::class)
-class CalculatorViewModelTest {
+internal class CalculatorViewModelTest {
     private val testDispatcher = UnconfinedTestDispatcher()
     private lateinit var testClass: CalculatorViewModel
 

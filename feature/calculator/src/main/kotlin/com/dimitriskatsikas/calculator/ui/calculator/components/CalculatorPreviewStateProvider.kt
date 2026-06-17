@@ -3,7 +3,7 @@ package com.dimitriskatsikas.calculator.ui.calculator.components
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import com.dimitriskatsikas.calculator.ui.calculator.CalculatorView
 
-class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.State> {
+internal class CalculatorPreviewStateProvider : PreviewParameterProvider<CalculatorView.State> {
 
     override val values = sequenceOf(
         CalculatorView.State(

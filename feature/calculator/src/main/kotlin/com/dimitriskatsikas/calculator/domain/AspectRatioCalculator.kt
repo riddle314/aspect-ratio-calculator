@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 private const val EMPTY_STRING = ""
 
-class AspectRatioCalculator @Inject constructor() {
+internal class AspectRatioCalculator @Inject constructor() {
 
     operator fun invoke(
         originalWidth: String,

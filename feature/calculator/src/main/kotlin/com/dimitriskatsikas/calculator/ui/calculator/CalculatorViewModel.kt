@@ -19,7 +19,7 @@ import javax.inject.Inject
 private const val EMPTY_STRING = ""
 
 @HiltViewModel
-class CalculatorViewModel @Inject constructor(
+internal class CalculatorViewModel @Inject constructor(
     private val aspectRatioCalculator: AspectRatioCalculator
 ) : ViewModel() {
 
@@ -239,7 +239,7 @@ class CalculatorViewModel @Inject constructor(
     }
 
     private fun sendEffect(effect: CalculatorView.Effect) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             _effect.send(effect)
         }
     }

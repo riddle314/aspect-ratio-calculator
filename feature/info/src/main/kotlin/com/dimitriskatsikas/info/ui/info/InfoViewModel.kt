@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class InfoViewModel @Inject constructor(
+internal class InfoViewModel @Inject constructor(
     @VersionName versionName: String
 ) : ViewModel() {
 
