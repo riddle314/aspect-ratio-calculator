@@ -47,7 +47,7 @@ import com.dimitriskatsikas.designsystem.theme.RatioCalcTheme
 import com.dimitriskatsikas.ratiocalculator.core.designsystem.R
 
 @Composable
-fun ResultCard(
+internal fun ResultCard(
     result: CalculatorView.State.Result,
     originalWidth: String,
     originalHeight: String

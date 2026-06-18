@@ -4,13 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dimitriskatsikas.calculator.domain.AspectRatioCalculator
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
+import com.dimitriskatsikas.common.dispatchers.AppDispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -19,17 +18,14 @@ import javax.inject.Inject
 private const val EMPTY_STRING = ""
 
 @HiltViewModel
-class CalculatorViewModel @Inject constructor(
-    private val aspectRatioCalculator: AspectRatioCalculator
+internal class CalculatorViewModel @Inject constructor(
+    private val aspectRatioCalculator: AspectRatioCalculator,
+    private val dispatchers: AppDispatchers
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(CalculatorView.State())
 
-    val state = _state.stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000),
-        initialValue = CalculatorView.State()
-    )
+    val state = _state.asStateFlow()
 
     private val _effect: Channel<CalculatorView.Effect> = Channel(Channel.CONFLATED)
     val effect: Flow<CalculatorView.Effect> = _effect.receiveAsFlow()
@@ -56,8 +52,8 @@ class CalculatorViewModel @Inject constructor(
                 ctaState = CalculatorView.State.CtaState.Loading
             )
         }
-        viewModelScope.launch {
-            val result = withContext(Dispatchers.Default) {
+        viewModelScope.launch(dispatchers.main) {
+            val result = withContext(dispatchers.default) {
                 val currentState = _state.value
                 aspectRatioCalculator(
                     originalWidth = currentState.originalWidth,
@@ -239,7 +235,7 @@ class CalculatorViewModel @Inject constructor(
     }
 
     private fun sendEffect(effect: CalculatorView.Effect) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatchers.main) {
             _effect.send(effect)
         }
     }

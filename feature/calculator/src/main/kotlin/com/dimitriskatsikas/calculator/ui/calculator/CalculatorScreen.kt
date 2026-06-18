@@ -7,6 +7,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.dimitriskatsikas.navigation.Route
 import com.dimitriskatsikas.calculator.ui.calculator.components.CalculatorContent
@@ -14,10 +15,10 @@ import com.dimitriskatsikas.ratiocalculator.core.designsystem.R
 
 @Composable
 fun CalculatorScreen(
-    viewModel: CalculatorViewModel,
     backStack: SnapshotStateList<Route>,
     adUnitId: String
 ) {
+    val viewModel: CalculatorViewModel = hiltViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
     val zeroInputErrorMessage = stringResource(id = R.string.calculator_error_zero_input)
@@ -62,23 +63,13 @@ private suspend fun handleEffect(
         }
 
         is CalculatorView.Effect.ShowErrorToast -> {
-            when (effect.errorType) {
-                CalculatorView.ErrorType.ZeroInput -> {
-                    snackbarHostState.showSnackbar(zeroInputErrorMessage)
-                }
-
-                CalculatorView.ErrorType.TargetValuesAllFilled -> {
-                    snackbarHostState.showSnackbar(targetValuesAllFilledErrorMessage)
-                }
-
-                CalculatorView.ErrorType.NoNumberInput -> {
-                    snackbarHostState.showSnackbar(noNumberInputErrorMessage)
-                }
-
-                CalculatorView.ErrorType.Unknown -> {
-                    snackbarHostState.showSnackbar(unKnownErrorMessage)
-                }
+           val message = when (effect.errorType) {
+                CalculatorView.ErrorType.ZeroInput -> zeroInputErrorMessage
+                CalculatorView.ErrorType.TargetValuesAllFilled -> targetValuesAllFilledErrorMessage
+                CalculatorView.ErrorType.NoNumberInput -> noNumberInputErrorMessage
+                CalculatorView.ErrorType.Unknown -> unKnownErrorMessage
             }
+            snackbarHostState.showSnackbar(message)
         }
     }
 }

@@ -46,7 +46,7 @@ import com.dimitriskatsikas.ratiocalculator.core.designsystem.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InfoContent(
+internal fun InfoContent(
     state: InfoView.State,
     onAction: (InfoView.UiAction) -> Unit
 ) {

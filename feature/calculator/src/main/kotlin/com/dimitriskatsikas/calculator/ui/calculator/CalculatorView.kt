@@ -2,7 +2,7 @@ package com.dimitriskatsikas.calculator.ui.calculator
 
 private const val EMPTY_STRING = ""
 
-object CalculatorView {
+internal object CalculatorView {
 
     data class State(
         val aspectRatioPresets: List<AspectRatioPreset> = AspectRatioPreset.entries,

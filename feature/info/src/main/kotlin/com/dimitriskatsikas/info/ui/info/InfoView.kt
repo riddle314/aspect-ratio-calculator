@@ -1,6 +1,6 @@
 package com.dimitriskatsikas.info.ui.info
 
-object InfoView {
+internal object InfoView {
 
     data class State(
         val versionName: String = ""

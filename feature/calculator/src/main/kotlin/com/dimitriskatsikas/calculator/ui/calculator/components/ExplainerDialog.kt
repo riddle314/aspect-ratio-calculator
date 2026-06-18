@@ -37,7 +37,7 @@ import com.dimitriskatsikas.ratiocalculator.feature.calculator.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ExplainerDialog(
+internal fun ExplainerDialog(
     modifier: Modifier = Modifier,
     onDismissRequest: () -> Unit
 ) {

@@ -2,9 +2,9 @@ package com.dimitriskatsikas.info.ui.info
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.dimitriskatsikas.common.dispatchers.AppDispatchers
 import com.dimitriskatsikas.common.di.VersionName
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,8 +14,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class InfoViewModel @Inject constructor(
-    @VersionName versionName: String
+internal class InfoViewModel @Inject constructor(
+    @VersionName versionName: String,
+    private val dispatchers: AppDispatchers
 ) : ViewModel() {
 
     val state: StateFlow<InfoView.State> = MutableStateFlow(InfoView.State(versionName = versionName))
@@ -40,7 +41,7 @@ class InfoViewModel @Inject constructor(
     }
 
     private fun sendEffect(effect: InfoView.Effect) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatchers.main) {
             _effect.send(effect)
         }
     }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-class AspectRatioCalculatorTest {
+internal class AspectRatioCalculatorTest {
 
     private lateinit var testClass: AspectRatioCalculator
 

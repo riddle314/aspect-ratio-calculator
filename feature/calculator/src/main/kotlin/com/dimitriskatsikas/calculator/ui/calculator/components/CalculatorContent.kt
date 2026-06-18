@@ -63,7 +63,7 @@ import com.dimitriskatsikas.ratiocalculator.core.designsystem.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CalculatorContent(
+internal fun CalculatorContent(
     state: CalculatorView.State,
     snackbarHostState: SnackbarHostState,
     adUnitId: String,
@@ -124,7 +124,7 @@ fun CalculatorContent(
 }
 
 @Composable
-fun MainContent(
+internal fun MainContent(
     state: CalculatorView.State,
     paddingValues: PaddingValues,
     onAction: (UiAction) -> Unit
