@@ -2,42 +2,32 @@ package com.dimitriskatsikas.calculator.ui.calculator
 
 import app.cash.turbine.test
 import com.dimitriskatsikas.calculator.domain.AspectRatioCalculator
-import kotlinx.coroutines.Dispatchers
+import com.dimitriskatsikas.common.dispatchers.AppDispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
-import org.junit.jupiter.api.AfterAll
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @OptIn(ExperimentalCoroutinesApi::class)
 internal class CalculatorViewModelTest {
-    private val testDispatcher = UnconfinedTestDispatcher()
     private lateinit var testClass: CalculatorViewModel
-
-    @BeforeAll
-    fun setupAll() {
-        Dispatchers.setMain(testDispatcher)
-    }
-
-    @AfterAll
-    fun tearDownAll() {
-        Dispatchers.resetMain()
-    }
 
     @BeforeEach
     fun setUp() {
+        val testDispatcher = UnconfinedTestDispatcher()
+        val testDispatchers = object : AppDispatchers {
+            override val io = testDispatcher
+            override val default = testDispatcher
+            override val main = testDispatcher
+        }
         testClass = CalculatorViewModel(
-            aspectRatioCalculator = AspectRatioCalculator()
+            aspectRatioCalculator = AspectRatioCalculator(),
+            dispatchers = testDispatchers
         )
     }
 
@@ -256,7 +246,7 @@ internal class CalculatorViewModelTest {
                 assertEquals("", state.originalHeight)
                 assertEquals("", state.newWidth)
                 assertEquals("", state.newHeight)
-                Assertions.assertNull(state.result)
+                assertNull(state.result)
                 assertEquals(CalculatorView.State.CtaState.Disabled, state.ctaState)
             }
         }

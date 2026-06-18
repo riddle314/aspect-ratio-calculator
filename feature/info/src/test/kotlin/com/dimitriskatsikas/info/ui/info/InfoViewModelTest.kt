@@ -1,11 +1,15 @@
 package com.dimitriskatsikas.info.ui.info
 
 import app.cash.turbine.test
+import com.dimitriskatsikas.common.dispatchers.AppDispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
+@OptIn(ExperimentalCoroutinesApi::class)
 internal class InfoViewModelTest {
 
     private lateinit var testClass: InfoViewModel
@@ -14,7 +18,16 @@ internal class InfoViewModelTest {
 
     @BeforeEach
     fun setUp() {
-        testClass = InfoViewModel(versionName = versionName)
+        val testDispatcher = UnconfinedTestDispatcher()
+        val testDispatchers = object : AppDispatchers {
+            override val io = testDispatcher
+            override val default = testDispatcher
+            override val main = testDispatcher
+        }
+        testClass = InfoViewModel(
+            versionName = versionName,
+            dispatchers = testDispatchers
+        )
     }
 
     @Test
