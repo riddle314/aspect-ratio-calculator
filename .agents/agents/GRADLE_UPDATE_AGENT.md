@@ -27,6 +27,7 @@ You should utilize standard Gradle scripts and specific CLI tools available in t
     * **Major Updates (X.y.z -> Y.a.b)**: Look up the library's official release notes/changelogs first to identify breaking changes, deprecated/removed APIs, or required migration steps.
     * **Minor Updates (x.Y.z -> x.A.b)**: Only check release notes/changelogs for core platform libraries (e.g., Kotlin, Gradle, Jetpack Compose, Hilt) or if compilation or tests fail.
     * **Patch Updates (x.y.Z -> x.y.C)**: Apply directly without checking release notes unless compilation or tests fail.
+    * **Cross-Reference & Refactor**: Whenever release notes are reviewed and potential breaking changes, deprecated APIs, or structural changes are identified, search the codebase (e.g., via search/grep) to check if the project uses them. If they are used, proactively refactor the code to match the new version's requirements.
   * Check specific compatibility matrices (e.g., Kotlin version matching with Jetpack Compose Compiler versions).
   * Safely increment versions in `libs.versions.toml`.
   * Run `./gradlew assembleDebug` to verify compilation.
