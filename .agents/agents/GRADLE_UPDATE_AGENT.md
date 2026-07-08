@@ -22,8 +22,12 @@ You should utilize standard Gradle scripts and specific CLI tools available in t
 
 ### 1. Dependency Analysis & Updates
 * **Version Catalog**: Access and update `gradle/libs.versions.toml`. Check for newer releases of core libraries such as AndroidX, Hilt, Jetpack Compose, Kotlin, and Gradle wrapper.
-* **Compatibility Verification**: When modifying any version:
-  * Check compatibility (e.g., Kotlin version matching with Jetpack Compose Compiler versions).
+* **Compatibility Verification & Risk Mitigation**: When modifying any version:
+  * **Assess Upgrade Risk**:
+    * **Major Updates (X.y.z -> Y.a.b)**: Look up the library's official release notes/changelogs first to identify breaking changes, deprecated/removed APIs, or required migration steps.
+    * **Minor Updates (x.Y.z -> x.A.b)**: Only check release notes/changelogs for core platform libraries (e.g., Kotlin, Gradle, Jetpack Compose, Hilt) or if compilation fails.
+    * **Patch Updates (x.y.Z -> x.y.C)**: Apply directly without checking release notes unless compilation or tests fail.
+  * Check specific compatibility matrices (e.g., Kotlin version matching with Jetpack Compose Compiler versions).
   * Safely increment versions in `libs.versions.toml`.
   * Run `./gradlew assembleDebug` to verify compilation.
   * Run `./gradlew check` to ensure unit tests continue passing.
