@@ -25,7 +25,7 @@ You should utilize standard Gradle scripts and specific CLI tools available in t
 * **Compatibility Verification & Risk Mitigation**: When modifying any version:
   * **Assess Upgrade Risk**:
     * **Major Updates (X.y.z -> Y.a.b)**: Look up the library's official release notes/changelogs first to identify breaking changes, deprecated/removed APIs, or required migration steps.
-    * **Minor Updates (x.Y.z -> x.A.b)**: Only check release notes/changelogs for core platform libraries (e.g., Kotlin, Gradle, Jetpack Compose, Hilt) or if compilation fails.
+    * **Minor Updates (x.Y.z -> x.A.b)**: Only check release notes/changelogs for core platform libraries (e.g., Kotlin, Gradle, Jetpack Compose, Hilt) or if compilation or tests fail.
     * **Patch Updates (x.y.Z -> x.y.C)**: Apply directly without checking release notes unless compilation or tests fail.
   * Check specific compatibility matrices (e.g., Kotlin version matching with Jetpack Compose Compiler versions).
   * Safely increment versions in `libs.versions.toml`.
