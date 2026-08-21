@@ -26,13 +26,6 @@ fun CalculatorScreen(
     val noNumberInputErrorMessage = stringResource(id = R.string.calculator_error_no_numbers_input)
     val unKnownErrorMessage = stringResource(id = R.string.calculator_error_unknown)
 
-    CalculatorContent(
-        state = state,
-        snackbarHostState = snackbarHostState,
-        adUnitId = adUnitId,
-        onAction = viewModel::onUiAction
-    )
-
     LaunchedEffect(Unit) {
         viewModel.effect.collect { effect ->
             handleEffect(
@@ -46,6 +39,13 @@ fun CalculatorScreen(
             )
         }
     }
+
+    CalculatorContent(
+        state = state,
+        snackbarHostState = snackbarHostState,
+        adUnitId = adUnitId,
+        onAction = viewModel::onUiAction
+    )
 }
 
 private suspend fun handleEffect(
