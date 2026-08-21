@@ -23,7 +23,7 @@ hilt = "2.59.2"
 ksp = "2.0.0-1.0.21"
 hiltNavigationCompose = "1.3.0"
 appcompat = "1.7.1"
-material = "1.13.0"
+material = "1.14.0"
 journeysJunitEngine = "0.3.0"
 
 [libraries]
