@@ -52,11 +52,12 @@ This repository is explicitly optimized for AI-assisted development. It utilizes
     - [android-cli](.agents/skills/android-cli/SKILL.md): Orchestrates Android development tasks including project creation, deployment, SDK management, and environment diagnostics using the `android` command-line tool. For agents to fully utilize this skill, the host machine should have the `android` CLI tool installed.
     - [audit-documentation](.agents/skills/audit-documentation/SKILL.md): Audits, updates, and maintains all project documentation (README.md, AGENTS.md guidelines, and SKILL.md files).
     - [scaffold-feature](.agents/skills/scaffold-feature/SKILL.md): Generates a new Android feature module under the feature/ directory following the MVVM, Jetpack Compose, and Hilt architecture guidelines.
+    - [upgrade-dependencies](.agents/skills/upgrade-dependencies/SKILL.md): Step-by-step guide for analyzing, upgrading, and verifying dependencies and version catalogs safely.
     - [validate-architecture](.agents/skills/validate-architecture/SKILL.md): Analyzes project code to ensure compliance with the Aspect Ratio Calculator architecture guidelines (MVVM, UDF, Jetpack Compose, Hilt, modularity).
 - **Subagent Personas:** Includes a `.agents/agents` directory defining specialized subagent personas that can be adopted or invoked for specific workflows:
-    - [CODE_REVIEWER_AGENT](.agents/agents/CODE_REVIEWER_AGENT.md): Persona for performing automated code quality, compose best practices, and architectural compliance reviews.
-    - [GRADLE_UPDATE_AGENT](.agents/agents/GRADLE_UPDATE_AGENT.md): Persona for monitoring dependencies, catalog updates, and build modularity.
-    - [UI_QA_AGENT](.agents/agents/UI_QA_AGENT.md): Persona for emulator management, journey tests, and visual regression testing.
+    - [code-reviewer](.agents/agents/code-reviewer.md): Persona for performing automated code quality, compose best practices, and architectural compliance reviews.
+    - [build-engineer](.agents/agents/build-engineer.md): Persona for managing build logic, convention plugins, Gradle build performance, modularity compliance, and dependency upgrades.
+    - [ui-qa](.agents/agents/ui-qa.md): Persona for emulator management, journey tests, and visual regression testing.
 
 ## 🛠 Setup & AdMob Configuration
 
