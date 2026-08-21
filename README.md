@@ -54,9 +54,9 @@ This repository is explicitly optimized for AI-assisted development. It utilizes
     - [scaffold-feature](.agents/skills/scaffold-feature/SKILL.md): Generates a new Android feature module under the feature/ directory following the MVVM, Jetpack Compose, and Hilt architecture guidelines.
     - [validate-architecture](.agents/skills/validate-architecture/SKILL.md): Analyzes project code to ensure compliance with the Aspect Ratio Calculator architecture guidelines (MVVM, UDF, Jetpack Compose, Hilt, modularity).
 - **Subagent Personas:** Includes a `.agents/agents` directory defining specialized subagent personas that can be adopted or invoked for specific workflows:
-    - [CODE_REVIEWER_AGENT](.agents/agents/CODE_REVIEWER_AGENT.md): Persona for performing automated code quality, compose best practices, and architectural compliance reviews.
-    - [GRADLE_UPDATE_AGENT](.agents/agents/GRADLE_UPDATE_AGENT.md): Persona for monitoring dependencies, catalog updates, and build modularity.
-    - [UI_QA_AGENT](.agents/agents/UI_QA_AGENT.md): Persona for emulator management, journey tests, and visual regression testing.
+    - [code-reviewer](.agents/agents/code-reviewer.md): Persona for performing automated code quality, compose best practices, and architectural compliance reviews.
+    - [gradle-updater](.agents/agents/gradle-updater.md): Persona for monitoring dependencies, catalog updates, and build modularity.
+    - [ui-qa](.agents/agents/ui-qa.md): Persona for emulator management, journey tests, and visual regression testing.
 
 ## 🛠 Setup & AdMob Configuration
 

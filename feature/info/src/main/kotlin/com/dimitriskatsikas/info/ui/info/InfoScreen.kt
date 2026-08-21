@@ -19,11 +19,6 @@ fun InfoScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val uriHandler = LocalUriHandler.current
 
-    InfoContent(
-        state = state,
-        onAction = viewModel::onUiAction
-    )
-
     LaunchedEffect(Unit) {
         viewModel.effect.collect { effect ->
             handleEffect(
@@ -33,6 +28,11 @@ fun InfoScreen(
             )
         }
     }
+
+    InfoContent(
+        state = state,
+        onAction = viewModel::onUiAction
+    )
 }
 
 private fun handleEffect(
