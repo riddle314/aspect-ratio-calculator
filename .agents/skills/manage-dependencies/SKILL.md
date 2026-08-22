@@ -97,7 +97,7 @@ When analyzing, modifying, or upgrading dependencies:
 
 Interdependent platform and tooling dependencies must be updated in lockstep:
 
-* **Kotlin & KSP**: Ensure the KSP plugin version matches the Kotlin compiler version (`kotlin` <-> `ksp`).
+* **Kotlin & KSP**: Ensure the KSP plugin version aligns with the Kotlin compiler family (e.g. KSP `2.3.x` for Kotlin `2.3.x`). Starting with KSP 2.3+, KSP patch releases follow independent semantic versioning.
 * **Kotlin & Compose Compiler**: Verify the Jetpack Compose compiler extension / Compose plugin is compatible with the Kotlin version.
 * **Android Gradle Plugin (AGP) & Gradle Wrapper**: Ensure the distribution URL in `gradle/wrapper/gradle-wrapper.properties` supports the AGP version.
 * **AndroidX Navigation 3 & Lifecycle**: Verify compatibility between Navigation 3, Lifecycle ViewModel, and Compose runtime artifacts.
