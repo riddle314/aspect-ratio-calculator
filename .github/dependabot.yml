@@ -28,7 +28,7 @@ updates:
       android-core:
         patterns:
           - "org.jetbrains.kotlin*"   # Catch Kotlin, Compose Plugin, & Serialization
-          - "com.google.devtools.ksp*" # KSP must match Kotlin version
+          - "com.google.devtools.ksp*" # KSP aligns with Kotlin major/minor version (e.g. KSP 2.3.x for Kotlin 2.3.x)
           - "androidx.compose*"       # All Compose libraries + BOM
           - "androidx.activity*"      # Often updated with Compose
           - "androidx.lifecycle*"     # Runtime/ViewModel hooks for Compose
