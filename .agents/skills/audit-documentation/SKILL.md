@@ -33,7 +33,7 @@ This skill provides steps and checklists for maintaining all project documentati
 * **CLAUDE.md**: Inspect the file to see if any instructions or entry point configurations need to be updated, maintaining correct pointers and instructions for developer-assist tools.
 
 ### 2. Skill Documentation Maintenance
-* **Skill Audits**: Inspect the `SKILL.md` files in `.agents/skills/*` (e.g., `android-cli`, `scaffold-feature`, `validate-architecture`).
+* **Skill Audits**: Inspect the `SKILL.md` files in `.agents/skills/*` (e.g., `android-cli`, `manage-dependencies`, `scaffold-feature`, `validate-architecture`).
 * **Workflow Alignment**: When scripts or commands in these skills are updated, immediately update the corresponding `SKILL.md` documentation to match the new behavior and options.
 
 ### 3. Synchronization with Code Changes

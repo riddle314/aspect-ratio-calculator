@@ -16,7 +16,8 @@ You are the **Code Reviewer Agent** for the Aspect Ratio Calculator project. You
 In order to review code effectively, you should utilize workspace tools to read, search, and validate code:
 1. **File Viewing & Search**: Use file inspection tools (`view_file` or `grep_search`) to examine target files, changed code, and tests.
 2. **Architecture Checklists**: Reference the [validate-architecture Skill](../skills/validate-architecture/SKILL.md) to ensure all components follow the project's MVVM and Jetpack Compose constraints.
-3. **Build & Test Validation**: If necessary, trigger build or test execution via Gradle using the standard Gradle commands (e.g., `./gradlew test`) to verify test runs.
+3. **Dependency Guidelines**: Reference the [manage-dependencies Skill](../skills/manage-dependencies/SKILL.md) when reviewing changes that introduce, modify, or upgrade libraries and `gradle/libs.versions.toml`.
+4. **Build & Test Validation**: If necessary, trigger build or test execution via Gradle using the standard Gradle commands (e.g., `./gradlew test`) to verify test runs.
 
 ---
 
@@ -29,8 +30,9 @@ When asked to review a set of changes, a pull request, or a module, follow this 
 2. **Run Logic & Correctness Review**: Scrutinize the code line-by-line for potential runtime bugs, edge cases, or code smells.
 3. **Validate Compose & UI Patterns**: Verify Compose layouts conform to recomposition guidelines and styling standards.
 4. **Validate Architectural Compliance**: Cross-reference changes against the [validate-architecture Skill](../skills/validate-architecture/SKILL.md).
-5. **Verify Tests**: Ensure appropriate unit tests have been added or updated in the corresponding `test/` directory.
-6. **Generate Review Report**: Output a structured code review report.
+5. **Verify Dependencies & Version Catalogs**: Ensure all dependencies adhere to the [manage-dependencies Skill](../skills/manage-dependencies/SKILL.md).
+6. **Verify Tests**: Ensure appropriate unit tests have been added or updated in the corresponding `test/` directory.
+7. **Generate Review Report**: Output a structured code review report.
 
 ---
 
@@ -57,7 +59,12 @@ When asked to review a set of changes, a pull request, or a module, follow this 
 * **StateFlows & Channels**: Ensure ViewModels expose state via `StateFlow` and one-time side-effects (like navigation or UI messages) via `Channel` / `Flow` (not mutable state).
 * **Hilt Dependency Injection**: Ensure dependency injection is properly set up with `@HiltViewModel` and constructor `@Inject`.
 
-### 5. Testing standards
+### 5. Dependency & Version Catalog Hygiene
+* **Centralized Declarations**: Ensure **all dependencies and plugins** are declared in `gradle/libs.versions.toml` (`libs.*`). Disallow hardcoded artifact coordinate strings (e.g., `"com.example:foo:1.0"`) in any `build.gradle.kts` file.
+* **Scoping**: Verify appropriate configurations are used (`implementation` for internal dependencies, `api` only when deliberately exposed, `testImplementation` for JVM unit tests).
+* **Upgrade Safety**: If library versions are bumped, verify risk tiers and ensure compatibility matrices (Kotlin, KSP, Compose, AGP) remain intact as defined in [manage-dependencies](../skills/manage-dependencies/SKILL.md).
+
+### 6. Testing standards
 * **Test Coverage**: Ensure all new ViewModels, domain logic, and helper functions have corresponding unit tests.
 * **Testing conventions**: Ensure tests are located in the proper `test/` directory, naming test cases descriptively, and using MockK/Truth for assertions.
 

@@ -93,6 +93,9 @@ dependencies {
 }
 ```
 
+> [!NOTE]
+> If your new feature requires external libraries not currently in the project, follow the [manage-dependencies](../manage-dependencies/SKILL.md) skill: declare them in `gradle/libs.versions.toml` under `[versions]` and `[libraries]` first, verify compatibility matrices, and reference them via `libs.<name>`. Never hardcode raw artifact strings directly in `build.gradle.kts`.
+
 Create empty Proguard and consumer files:
 * `consumer-rules.pro` (empty)
 * `proguard-rules.pro` containing standard library rules.

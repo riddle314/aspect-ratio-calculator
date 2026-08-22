@@ -44,8 +44,8 @@ This project leverages custom subagent personas and skills specifically structur
 ### 🛠️ Custom Skills (located in `.agents/skills/`)
 - **[android-cli](.agents/skills/android-cli/SKILL.md):** Orchestrates SDK installation, emulator boot/management, screenshot captures, and layout nesting analysis.
 - **[audit-documentation](.agents/skills/audit-documentation/SKILL.md):** Main guide to check layout changes, verify file URLs, and maintain system documentation.
+- **[manage-dependencies](.agents/skills/manage-dependencies/SKILL.md):** Comprehensive guide for managing the full dependency lifecycle (adding, upgrading, matrix compatibility, scoping, pruning).
 - **[scaffold-feature](.agents/skills/scaffold-feature/SKILL.md):** Templates and structure to quickly generate new MVVM feature modules.
-- **[upgrade-dependencies](.agents/skills/upgrade-dependencies/SKILL.md):** Step-by-step guide for analyzing, upgrading, and verifying dependencies and version catalogs safely.
 - **[validate-architecture](.agents/skills/validate-architecture/SKILL.md):** Diagnostic checks verifying Hilt DI, compose themes, state flows, and navigation compliance.
 
 ## 🔒 Security
