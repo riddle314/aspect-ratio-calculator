@@ -26,6 +26,7 @@ When asked to validate a module, file, or feature, you must perform the followin
 ### 1. Modularity & Dependencies
 - **Feature Modules:** Is the code placed in the correct module? (e.g., `:app`, `:feature:*`, `:core:designsystem`, `:core:navigation`, `:core:common`).
 - **Build System:** Is `build.gradle.kts` using centralized build logic (`build-logic/`) instead of hardcoding plugin versions and complex logic?
+- **Version Catalog Adherence:** Are all dependencies and plugins declared via `libs.*` accessors referencing `gradle/libs.versions.toml` per [manage-dependencies](../manage-dependencies/SKILL.md)? Flag any hardcoded string coordinates (e.g., `"com.example:lib:1.0"`) in `build.gradle.kts` as violations.
 
 ### 2. UI & Jetpack Compose
 - **No XML:** Ensure no XML layout files (`.xml` inside `res/layout`) were created for new features. 100% Jetpack Compose is required.

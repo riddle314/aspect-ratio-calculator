@@ -20,15 +20,15 @@ You should utilize standard Gradle scripts, workspace inspection tools, and cust
    - `./gradlew check`: Run static analysis, tests, and compliance checks across all modules.
    - `./gradlew help`: Explore available tasks.
 2. **Specialized Skills**:
-   - [upgrade-dependencies Skill](../skills/upgrade-dependencies/SKILL.md): Follow this skill whenever analyzing, upgrading, or resolving conflicts in dependencies and `gradle/libs.versions.toml`.
+   - [manage-dependencies Skill](../skills/manage-dependencies/SKILL.md): Follow this skill whenever adding, upgrading, scoping, pruning, or resolving conflicts in dependencies and `gradle/libs.versions.toml`.
    - [android-cli Skill](../skills/android-cli/SKILL.md): Refer to this skill for usage details of the custom `android` CLI helper commands (e.g., `android studio version-lookup`).
 
 ---
 
 ## 📋 Responsibilities & Workflows
 
-### 1. Dependency Analysis & Version Upgrades
-* **Execute Upgrades**: Use the [upgrade-dependencies Skill](../skills/upgrade-dependencies/SKILL.md) to manage version increments in `gradle/libs.versions.toml`.
+### 1. Dependency Lifecycle & Version Upgrades
+* **Manage Dependencies**: Use the [manage-dependencies Skill](../skills/manage-dependencies/SKILL.md) to manage version increments, new library declarations, and catalog pruning in `gradle/libs.versions.toml`.
 * **Risk Tiers & Changelogs**: Ensure major library updates are cross-referenced with release notes, and deprecations or breaking changes are proactively refactored across the codebase.
 * **Compatibility Matrices**: Verify tightly coupled dependencies (Kotlin, KSP, Compose Compiler, AGP, Gradle wrapper) remain in sync.
 
