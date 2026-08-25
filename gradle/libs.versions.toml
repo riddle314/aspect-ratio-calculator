@@ -2,7 +2,7 @@
 android-compileSdk = "37"
 android-minSdk = "28"
 android-targetSdk = "37"
-agp = "9.3.0"
+agp = "9.3.2"
 javaxInject = "1"
 kotlin = "2.3.21"
 coreKtx = "1.19.0"
